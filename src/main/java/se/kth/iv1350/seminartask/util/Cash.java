@@ -7,10 +7,10 @@ public class Cash {
     private float amount;
     private String currency;
     /**
-     * Creates a new instance representing Cash with 
+     * Creates a new instance representing with 
      * specified amount and currency
      * 
-     * @param amount The cash amount represented by the instance
+     * @param amount The amount represented by the instance
      * @param currency The currency type of the instance
      */
     public Cash(float amount, String currency) {
@@ -18,10 +18,18 @@ public class Cash {
         this.currency = currency;
     }
     
+    /**
+     * 
+     * @return amount of the <code> Cash </code> instance 
+     */
     public float getAmount() {
         return this.amount; 
     }
 
+    /**
+     * 
+     * @return currecy type of the <code> Cash </code> instance 
+     */
     public String getCurrency() {
         return this.currency; 
     }
