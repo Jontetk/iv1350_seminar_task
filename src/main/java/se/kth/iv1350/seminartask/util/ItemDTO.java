@@ -5,7 +5,13 @@ public class ItemDTO {
     private String description;
     private Cash price;
     private float VatRate;
-
+    /**
+     * 
+     * @param ItemID The id for the item
+     * @param description The description for the item
+     * @param price The price of the item as a Cash object
+     * @param vatRate The VatRate of the item
+     */
 
     public ItemDTO(int ItemID, String description, Cash price,float vatRate) {
         this.ItemID = ItemID;
