@@ -17,6 +17,7 @@ public class ItemRegistry {
                 return item;
             
         }
+        return null;
 
     }
 }
