@@ -12,7 +12,7 @@ public class ItemRegistry {
     public ItemDTO searchItem (int id) {
         for (ItemDTO item : items) {
             (if item.getItemID() == id) 
-                return
+                return item;
             
         }
 
