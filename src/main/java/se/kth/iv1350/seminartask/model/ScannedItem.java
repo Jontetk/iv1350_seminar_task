@@ -36,4 +36,20 @@ public class ScannedItem {
 	public int getAmount() {
 		return this.amount;
 	}
+    
+    
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == null)
+            return false;
+
+        if (obj.getClass() != this.getClass())
+            return false;
+
+        int thisID = this.getItem().getItemID();
+        int objID = ((ScannedItem)obj).getItem().getItemID();
+       
+
+        return thisID == objID;
+    }
 }

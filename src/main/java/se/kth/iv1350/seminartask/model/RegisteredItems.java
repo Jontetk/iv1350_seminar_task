@@ -11,8 +11,8 @@ public class RegisteredItems {
     
     public RegisteredItems(){
         items = new ArrayList<ScannedItem>();
-        totalPrice = new Cash(0.0, "");
-        totalVAT = new Cash(0.0, "");
+        totalPrice = new Cash(0.0, "I$");
+        totalVAT = new Cash(0.0, "I$");
     }
 
     /**
@@ -41,13 +41,15 @@ public class RegisteredItems {
     /*so it updates those when new items are added */
 
     public void addItem(ScannedItem currentScannedItem) {   
-        /*TODO CODE SMELL: MESSAGE CHAIN  BLOATED CODE?*/
+        
         int itemAmount = currentScannedItem.getAmount();
         double itemsCashAmount = currentScannedItem.getItem().getPrice().getAmount() * itemAmount; 
-        String itemCurrency = currentScannedItem.getItem().getPrice().getCurrency();
-        totalPrice = new Cash(itemsCashAmount, itemCurrency);
-        totalVAT = new Cash(totalPrice.getAmount() * currentScannedItem.getItem().getVatRate() * itemAmount,itemCurrency ); 
-        /*TODO Implement addItem */
+        double vatRate = currentScannedItem.getItem().getVatRate();
+
+        totalPrice.changeAmount(itemsCashAmount);
+        totalVAT.changeAmount(itemsCashAmount * vatRate);
+        
+
     }
     
 }
