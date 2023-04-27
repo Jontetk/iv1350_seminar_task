@@ -16,7 +16,7 @@ public class RegisteredItems {
     }
 
     /**
-     * @deprecated Only for testing???
+     * @deprecated Only for testing 
      * @param items
      */
     public RegisteredItems(ArrayList<ScannedItem> items, Cash price, Cash vat){
@@ -37,8 +37,7 @@ public class RegisteredItems {
     }
 
 
-    /*TODO ADD fucntions to calculate totalVat & price in this method below */
-    /*so it updates those when new items are added */
+    
 
     public void addItem(ScannedItem currentScannedItem) {   
         
@@ -48,7 +47,7 @@ public class RegisteredItems {
 
         totalPrice.changeAmount(itemsCashAmount);
         totalVAT.changeAmount(itemsCashAmount * vatRate);
-        
+        /*TODO UPDATE ARRAYLIST WITH ITEM */
 
     }
     
