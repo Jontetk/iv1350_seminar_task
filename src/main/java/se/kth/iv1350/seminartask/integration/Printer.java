@@ -8,6 +8,6 @@ public class Printer {
 
     public void printReceipt(SaleLog currentSaleLog)
     {
-        /*TODO Implement print receipt using system.out.print?? No need to test it. */
+        /*TODO Implement print receipt using system.out.print?? Test it see page 163. */
     }
 }
