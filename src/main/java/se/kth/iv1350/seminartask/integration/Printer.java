@@ -1,5 +1,6 @@
 package se.kth.iv1350.seminartask.integration;
 
+import se.kth.iv1350.seminartask.model.*;
 public class Printer {
     
     public Printer(){
