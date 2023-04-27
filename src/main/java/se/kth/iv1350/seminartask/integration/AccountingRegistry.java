@@ -12,6 +12,7 @@ public class AccountingRegistry {
 
 	}
 	/**
+	 * Saves the <code>SaleLog</code> for the current sale to the accounting database
 	 * 
 	 * @param currentSaleLog The <code>SaleLog</code> that should be saved in the <code>AccountRegistry</code>
 	 */
