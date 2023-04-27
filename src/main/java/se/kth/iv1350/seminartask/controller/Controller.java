@@ -2,11 +2,14 @@ package se.kth.iv1350.seminartask.controller;
 
 import se.kth.iv1350.seminartask.integration.*;
 import se.kth.iv1350.seminartask.model.*;
+import se.kth.iv1350.seminartask.util.Cash;
 
 public class Controller {
-    RegistryCreator creator;
+    ItemRegistry itemRegistry;
+    AccountingRegistry accountingRegistry;
     Printer printer;
     RegisteredItems regItems;
+    CashRegister cashRegister;
 
     /**
      * 
@@ -14,8 +17,12 @@ public class Controller {
      * @param printer for printing receipts
      */
     public Controller(RegistryCreator creator, Printer printer){
-        this.creator = creator;
         this.printer = printer;
+        this.itemRegistry = creator.getItemRegistry();
+        this.accountingRegistry = creator.getAccountingRegistry();
+        this.cashRegister = new CashRegister(new Cash(10000,"I$"));
+        
+
     }
 
     /**

@@ -19,7 +19,7 @@ public class RegistryCreator {
  * 
  * @return an item registry object 
  */
-public ItemRegistry getRegistry() {
+public ItemRegistry getItemRegistry() {
     return itemRegistry;
 }
 
