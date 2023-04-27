@@ -3,7 +3,6 @@ package se.kth.iv1350.seminartask.model;
 
 import se.kth.iv1350.seminartask.util.*;
 import java.util.ArrayList;
-
 public class RegisteredItems {
     ArrayList<ScannedItem> items;
     Cash totalPrice;
@@ -16,11 +15,11 @@ public class RegisteredItems {
     }
 
     /**
-     * @deprecated Only for testing 
+     * 
      * @param items
      */
     public RegisteredItems(ArrayList<ScannedItem> items, Cash price, Cash vat){
-        this.items.addAll(items);
+        this.items = items;
         this.totalPrice = price;
         this.totalVAT = vat;
     }
@@ -45,16 +44,16 @@ public class RegisteredItems {
         double itemsCashAmount = currentScannedItem.getItem().getPrice().getAmount() * itemAmount; 
         double vatRate = currentScannedItem.getItem().getVatRate();
 
-        totalPrice.changeAmount(itemsCashAmount);
-        totalVAT.changeAmount(itemsCashAmount * vatRate);
+        totalPrice.changeAmount(itemsCashAmount+totalPrice.getAmount());
+        totalVAT.changeAmount((itemsCashAmount * vatRate)+totalVAT.getAmount());
         /*TODO UPDATE ARRAYLIST WITH ITEM */
         int index = 0 ;
         if (items.contains(currentScannedItem)){
-             index = items.indexOf(currentScannedItem);
-             items.get(index).increaseAmount(currentScannedItem.getAmount());
+            index = items.indexOf(currentScannedItem);
+            items.get(index).increaseAmount(currentScannedItem.getAmount());
         }
         else          
-                items.add(currentScannedItem);
+            items.add(currentScannedItem);
             
             
 
