@@ -6,7 +6,7 @@ import se.kth.iv1350.seminartask.model.*;
 public class Controller {
     RegistryCreator creator;
     Printer printer;
-    RegisteredItems regitems;
+    RegisteredItems regItems;
     public Controller(RegistryCreator creator, Printer printer){
         this.creator = creator;
         this.printer = printer;
@@ -15,7 +15,7 @@ public class Controller {
 
     public void startSale(){
         /*TODO Implement after implementing RegisteredItems class */
-        RegisteredItems this.regItems = new RegisteredItems();
+        this.regItems = new RegisteredItems();
      
     }
 }
