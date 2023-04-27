@@ -9,6 +9,15 @@ public class RegisteredItems {
     Cash totalPrice;
     Cash totalVAT;
     
+    public RegisteredItems(){
+        items = new ArrayList<ScannedItem>();
+    }
+
+    public RegisteredItems(ArrayList<ScannedItem> items){
+        this.items.addAll(items);
+    }
+
+
     public ArrayList<ScannedItem> getItems() {
         return items;
     }
@@ -19,6 +28,9 @@ public class RegisteredItems {
         return totalVAT;
     }
 
+
+    /*TODO ADD fucntions to calculate totalVat & price in this method below */
+    /*so it updates those when new items are added */
     public void addItem() {
         /*TODO Implement addItem */
     }
