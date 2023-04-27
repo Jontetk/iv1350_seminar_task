@@ -6,11 +6,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import java.util.Arrays;
 import java.util.ArrayList;
 
 
-public class RegisteredItemsTest {
+class RegisteredItemsTest {
     private ScannedItem scanneditem1;
     private ScannedItem scanneditem2;
     private ScannedItem scanneditem3;

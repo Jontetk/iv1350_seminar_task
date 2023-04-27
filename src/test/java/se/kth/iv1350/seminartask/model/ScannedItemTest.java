@@ -7,14 +7,15 @@ import se.kth.iv1350.seminartask.util.ItemDTO;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.BeforeAll;
+
+import org.junit.jupiter.api.BeforeEach;
 
 
-public class ScannedItemTest {
+  class ScannedItemTest {
     private ScannedItem scannedItemOne;
     private ScannedItem scannedItemTwo;
     private ScannedItem scannedItemThree;
-    @BeforeAll
+    @BeforeEach
     void Setup(){
         ItemDTO itemOne = new ItemDTO(1, null, null, 0);
         ItemDTO itemTwo = new ItemDTO(2, null, null, 0);
