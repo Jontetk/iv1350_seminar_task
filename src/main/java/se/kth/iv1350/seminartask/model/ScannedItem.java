@@ -1,18 +1,13 @@
 package se.kth.iv1350.seminartask.model;
 import se.kth.iv1350.seminartask.util.*;
 
-/**
- * 
- * 
- * Class for keeping track of the amount and what type a specific item in the sale is
- */
 
 public class ScannedItem {
     private ItemDTO item;
 	private int amount;
 
     /**
-     * 
+     * Creates the object for the amount and what type a specific item in the sale is
      * @param item The type of item which should be added
      * @param amount The amount of the item that should be added
      */
@@ -32,13 +27,13 @@ public class ScannedItem {
      * @return The scanned item 
      */
 	public ItemDTO getItem() {
-		return item;
+		return this.item;
 	}
     /**
      * 
      * @return The amount of the item
      */
 	public int getAmount() {
-		return amount;
+		return this.amount;
 	}
 }

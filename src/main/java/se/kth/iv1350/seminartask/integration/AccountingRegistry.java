@@ -4,7 +4,7 @@ public class AccountingRegistry {
 	SaleLog currentSaleLog
 
 	/**
-	 * Class that should save the sale log for each sale to an external database
+	 * Saves the sale log for each sale to an external database
 	 * 
 	 * 
 	 */
