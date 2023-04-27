@@ -4,7 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import se.kth.iv1350.seminartask.util.ItemDTO;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.*;
@@ -23,5 +24,10 @@ public class ScannedItemTest {
     @Test
     void testEqualsSelf() {
         assertTrue(scannedItemOne.equals(scannedItemOne), "Object does not equal self");
+    }
+    
+    @Test
+    void testEqualsDifferentIds(){
+        assertFalse(scannedItemOne.equals(scannedItemTwo), "Objects with different ids equal each other");
     }
 }
