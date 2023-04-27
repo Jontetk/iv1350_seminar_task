@@ -45,14 +45,14 @@ public class RegisteredItemsTest {
     }
 
     @Test
-    void testAddItem() {
+    void testAddNewItemContainsNewItem() {
         ItemDTO newitem = new ItemDTO(5, null, new Cash(40, "I$"), 0.4);
         ScannedItem newscScannedItem = new ScannedItem(newitem, 1);
         regItems.addItem(newscScannedItem);
         assertTrue(regItems.getItems().contains(newscScannedItem));
     }
     @Test
-    void testAddItem1() {
+    void testAddNewItemCorrectVatAndPrice() {
         ItemDTO newitem = new ItemDTO(5, null, new Cash(40, "I$"), 0.4);
         ScannedItem newscScannedItem = new ScannedItem(newitem, 1);
         regItems.addItem(newscScannedItem);
@@ -62,7 +62,7 @@ public class RegisteredItemsTest {
         assertEquals(excpectedvatamount, regItems.totalVAT.getAmount(), "Total vat does not match excpected");
     }
     @Test
-    void testAddItem2() {
+    void testAddItemAlreadyExistCorrectArraySize() {
         ScannedItem newscScannedItem = new ScannedItem(item2, 10);
         int excpectedsize = regItems.getItems().size();
         regItems.addItem(newscScannedItem);
