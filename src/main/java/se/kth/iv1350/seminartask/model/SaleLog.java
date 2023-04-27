@@ -2,23 +2,34 @@ package se.kth.iv1350.seminartask.model;
 
 import se.kth.iv1350.seminartask.util.*;
 import java.time.LocalDateTime;
-
+import java.util.ArrayList;
 
 public class SaleLog {
-    Cash totalDiscount;
-    LocalDateTime saleDate;
-    RegisteredItems registeredItems;
+    
+    private LocalDateTime saleDate;
+    private RegisteredItems registeredItems;
+    private Cash change;
+
     public SaleLog(){
         this.saleDate = LocalDateTime.now();
     }
-    public Cash getTotalDiscount() {
-        return totalDiscount;
-    }
     public LocalDateTime getSaleDate() {
-        return saleDate;
+        return this.saleDate;
     }
-    public RegisteredItems getRegisteredItems() {
-        return registeredItems;
+    public ArrayList<ScannedItem> getScannedItems() {
+        return this.registeredItems.getItems();
+    }
+    public Cash getTotalVAT() {
+        return this.registeredItems.getTotalVAT();
+    }
+    public Cash getChange() {
+        return this.change;
+    }
+    public void saveRegistredItems(RegisteredItems registeredItems) {
+        this.registeredItems = registeredItems;
+    }
+    public void saveChange(Cash change) {
+        this.change = change;
     }
     
     /*TODO implement other methods of the class */
