@@ -32,13 +32,13 @@ public class ScannedItem {
      * @return The scanned item 
      */
 	public ItemDTO getItem() {
-		return item;
+		return this.item;
 	}
     /**
      * 
      * @return The amount of the item
      */
 	public int getAmount() {
-		return amount;
+		return this.amount;
 	}
 }

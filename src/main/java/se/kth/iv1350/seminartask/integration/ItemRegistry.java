@@ -11,7 +11,7 @@ public class ItemRegistry {
     new ItemDTO(5,"Candy",new Cash(100,"I$"),0.1)};
 
     /**
-     * This is a class that should communicate with an external item database
+     * Communicates with an external item database
      *
      * 
      */
