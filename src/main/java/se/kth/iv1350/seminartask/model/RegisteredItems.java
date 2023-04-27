@@ -11,10 +11,18 @@ public class RegisteredItems {
     
     public RegisteredItems(){
         items = new ArrayList<ScannedItem>();
+        totalPrice = new Cash(0.0, "");
+        totalVAT = new Cash(0.0, "");
     }
 
-    public RegisteredItems(ArrayList<ScannedItem> items){
+    /**
+     * @deprecated Only for testing???
+     * @param items
+     */
+    public RegisteredItems(ArrayList<ScannedItem> items, Cash price, Cash vat){
         this.items.addAll(items);
+        this.totalPrice = price;
+        this.totalVAT = vat;
     }
 
 
@@ -31,7 +39,14 @@ public class RegisteredItems {
 
     /*TODO ADD fucntions to calculate totalVat & price in this method below */
     /*so it updates those when new items are added */
-    public void addItem() {
+
+    public void addItem(ScannedItem currentScannedItem) {   
+        /*TODO CODE SMELL: MESSAGE CHAIN  BLOATED CODE?*/
+        int itemAmount = currentScannedItem.getAmount();
+        double itemsCashAmount = currentScannedItem.getItem().getPrice().getAmount() * itemAmount; 
+        String itemCurrency = currentScannedItem.getItem().getPrice().getCurrency();
+        totalPrice = new Cash(itemsCashAmount, itemCurrency);
+        totalVAT = new Cash(totalPrice.getAmount() * currentScannedItem.getItem().getVatRate() * itemAmount,itemCurrency ); 
         /*TODO Implement addItem */
     }
     
