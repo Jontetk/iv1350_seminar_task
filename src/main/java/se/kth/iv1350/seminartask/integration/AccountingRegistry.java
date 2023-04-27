@@ -1,7 +1,7 @@
 package se.kth.iv1350.seminartask.integration;
-
+import se.kth.iv1350.seminartask.model.*;
 public class AccountingRegistry {
-	SaleLog currentSaleLog
+	SaleLog currentSaleLog;
 
 	/**
 	 * Saves the sale log for each sale to an external database
