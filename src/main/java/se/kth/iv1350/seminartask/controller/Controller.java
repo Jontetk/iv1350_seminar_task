@@ -7,14 +7,21 @@ public class Controller {
     RegistryCreator creator;
     Printer printer;
     RegisteredItems regItems;
+
+    /**
+     * 
+     * @param creator registry creator, used to fetch registry objects for use
+     * @param printer for printing receipts
+     */
     public Controller(RegistryCreator creator, Printer printer){
         this.creator = creator;
         this.printer = printer;
     }
 
-
+    /**
+     * Initate new object to store all bought items during sale
+     */
     public void startSale(){
-        /*TODO Implement after implementing RegisteredItems class */
         this.regItems = new RegisteredItems();
      
     }
