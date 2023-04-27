@@ -31,9 +31,9 @@ public class RegisteredItemsTest {
         item4 = new ItemDTO(4, null, new Cash(40, "I$"), 0.4);
 
         scanneditem1 = new ScannedItem(item1, 2);
-        scanneditem2 = new ScannedItem(item1, 5);
-        scanneditem3 = new ScannedItem(item1, 1);
-        scanneditem4 = new ScannedItem(item1, 7);
+        scanneditem2 = new ScannedItem(item2, 5);
+        scanneditem3 = new ScannedItem(item3, 1);
+        scanneditem4 = new ScannedItem(item4, 7);
         ArrayList<ScannedItem> items = new ArrayList<ScannedItem>();
         items.add(scanneditem1);
         items.add(scanneditem2);
@@ -67,7 +67,7 @@ public class RegisteredItemsTest {
         int excpectedsize = regItems.getItems().size();
         regItems.addItem(newscScannedItem);
         int actualsize = regItems.getItems().size();
-        assertEquals(excpectedsize, actualsize,  "wrong"+Arrays.toString(regItems.getItems().toArray())+);
+        assertEquals(excpectedsize, actualsize,  "wrong");
         
     }
 }
