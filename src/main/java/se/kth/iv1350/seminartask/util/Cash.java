@@ -33,6 +33,14 @@ public class Cash {
     public String getCurrency() {
         return this.currency; 
     }
+    /**
+     * Changes the amount in the object to the <code>newamount</code>
+     * @param newamount The amount to set the amount of the object to
+     * 
+     */
+    public void changeAmount(double newamount) {
+        this.amount = newamount;
+    }
 
 
 }
