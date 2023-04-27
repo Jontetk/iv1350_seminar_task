@@ -1,7 +1,7 @@
 package se.kth.iv1350.seminartask.controller;
 
-import se.kth.iv1350.seminartask.integration.RegistryCreator;
-
+import se.kth.iv1350.seminartask.integration.*;
+import se.kth.iv1350.seminartask.model.*;
 
 public class Controller {
     RegistryCreator creator;
@@ -14,5 +14,7 @@ public class Controller {
 
     public RegisteredItems startSale(){
         /*TODO Implement after implementing RegisteredItems class */
+        RegisteredItems regItems = new RegisteredItems();
+        return regItems;
     }
 }

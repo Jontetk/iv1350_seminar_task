@@ -1,5 +1,7 @@
 package se.kth.iv1350.seminartask.model;
 
+
+import se.kth.iv1350.seminartask.util.*;
 import java.util.ArrayList;
 
 public class RegisteredItems {
