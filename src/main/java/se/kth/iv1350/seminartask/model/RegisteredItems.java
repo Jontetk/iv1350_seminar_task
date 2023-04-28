@@ -46,7 +46,6 @@ public class RegisteredItems {
 
         totalPrice.changeAmount(itemsCashAmount+totalPrice.getAmount());
         totalVAT.changeAmount((itemsCashAmount * vatRate)+totalVAT.getAmount());
-        /*TODO UPDATE ARRAYLIST WITH ITEM */
         int index = 0 ;
         if (items.contains(currentScannedItem)){
             index = items.indexOf(currentScannedItem);
