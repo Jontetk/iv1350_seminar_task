@@ -25,6 +25,9 @@ public class SaleLog {
     public Cash getChange() {
         return this.change;
     }
+    public Cash getTotalPrice () {
+        return this.registeredItems.getTotalPrice();
+    }
     public void saveRegistredItems(RegisteredItems registeredItems) {
         this.registeredItems = registeredItems;
     }

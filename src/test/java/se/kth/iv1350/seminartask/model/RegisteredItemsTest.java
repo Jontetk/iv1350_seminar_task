@@ -67,6 +67,7 @@ class RegisteredItemsTest {
         regItems.addItem(newscScannedItem);
         int actualsize = regItems.getItems().size();
         assertEquals(excpectedsize, actualsize,  "wrong");
+    
         
     }
 }

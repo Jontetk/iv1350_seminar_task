@@ -38,7 +38,7 @@ public class Cash {
      * @param newamount The amount to set the amount of the object to
      * 
      */
-    public void changeAmount(double newamount) {
+    public void saveAmount(double newamount) {
         this.amount = newamount;
     }
 
