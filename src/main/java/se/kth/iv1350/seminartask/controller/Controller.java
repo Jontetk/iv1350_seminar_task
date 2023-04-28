@@ -38,7 +38,10 @@ public class Controller {
      
     }
 
-    /*TODO  think about endSale method */
+    /**
+     * @deprecated
+     * Not implemented
+     */
     public void endSale(){
     }
 
@@ -48,7 +51,7 @@ public class Controller {
     }
 
 
-    /*TODO COMPLETE THIS IF NEEDED */
+    
     public ItemDTO selectItem(int id, int amount)
     {
         ItemDTO item = itemRegistry.searchItem(id);
