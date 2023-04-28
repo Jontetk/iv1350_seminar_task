@@ -4,15 +4,17 @@ import java.util.ArrayList;
 
 import se.kth.iv1350.seminartask.integration.*;
 import se.kth.iv1350.seminartask.model.*;
+
 import se.kth.iv1350.seminartask.util.Cash;
 import se.kth.iv1350.seminartask.util.ItemDTO;
 
 public class Controller {
-    ItemRegistry itemRegistry;
-    AccountingRegistry accountingRegistry;
-    Printer printer;
-    RegisteredItems registeredItems;
-    CashRegister cashRegister;
+    private ItemRegistry itemRegistry;
+    private AccountingRegistry accountingRegistry;
+    private Printer printer;
+    private RegisteredItems registeredItems;
+    private CashRegister cashRegister;
+    private SaleLog currentSaleLog;
 
     /**
      * 
@@ -59,15 +61,25 @@ public class Controller {
         return item;
     }
 
-     // NOT IMPLELEMTED
     public Cash amountPaid(Cash paidAmount){
-
-        return null; /*Temp return val */
+        Cash change = cashRegister.addPayment(paidAmount, registeredItems.getTotalPrice());
+        return change; 
     }
 
-    // NOT IMPLELEMTED
+    public Cash getTotal(){
+        currentSaleLog = new SaleLog();
+        currentSaleLog.saveRegistredItems(registeredItems);
+        Cash totalprice = registeredItems.getTotalPrice();
+        return totalprice;
+    }
+
+
+    
+    
     public SaleLog getReceipt(){
-
-        return null; // temporary
+        accountingRegistry.saveSaleLog(currentSaleLog);
+        printer.printReceipt(currentSaleLog);
+        return currentSaleLog; 
     }
+
 }
