@@ -1,15 +1,20 @@
 package se.kth.iv1350.seminartask.controller;
 
+import java.util.ArrayList;
+
 import se.kth.iv1350.seminartask.integration.*;
 import se.kth.iv1350.seminartask.model.*;
+
 import se.kth.iv1350.seminartask.util.Cash;
+import se.kth.iv1350.seminartask.util.ItemDTO;
 
 public class Controller {
-    ItemRegistry itemRegistry;
-    AccountingRegistry accountingRegistry;
-    Printer printer;
-    RegisteredItems regItems;
-    CashRegister cashRegister;
+    private ItemRegistry itemRegistry;
+    private AccountingRegistry accountingRegistry;
+    private Printer printer;
+    private RegisteredItems registeredItems;
+    private CashRegister cashRegister;
+    private SaleLog currentSaleLog;
 
     /**
      * 
@@ -29,7 +34,55 @@ public class Controller {
      * Initate new object to store all bought items during sale
      */
     public void startSale(){
-        this.regItems = new RegisteredItems();
+        this.registeredItems = new RegisteredItems();
      
     }
+
+    /**
+     * @deprecated
+     * Not implemented
+     */
+    public void endSale(){
+    }
+
+    
+    public ArrayList<ScannedItem> getAllRegistered(){
+        return this.registeredItems.getItems();
+    }
+
+
+    
+    public ItemDTO selectItem(int id, int amount)
+    {
+        ItemDTO item = itemRegistry.searchItem(id);
+        boolean itemFound = item != null;
+        if(itemFound)
+            {
+                ScannedItem currentScanneditem = new ScannedItem(item, amount);
+                registeredItems.addItem(currentScanneditem);
+            }
+        return item;
+    }
+
+    public Cash amountPaid(Cash paidAmount){
+        Cash change = cashRegister.addPayment(paidAmount, registeredItems.getTotalPrice());
+        return change; 
+    }
+
+    public Cash getTotal(){
+        currentSaleLog = new SaleLog();
+        currentSaleLog.saveRegistredItems(registeredItems);
+        Cash totalprice = registeredItems.getTotalPrice();
+        return totalprice;
+    }
+
+
+    
+    
+    public SaleLog getReceipt(){
+        accountingRegistry.saveSaleLog(currentSaleLog);
+        printer.printReceipt(currentSaleLog);
+        return currentSaleLog; 
+    }
+
 }
