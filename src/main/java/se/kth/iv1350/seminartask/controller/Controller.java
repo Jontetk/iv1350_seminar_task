@@ -15,6 +15,7 @@ public class Controller {
     private RegisteredItems registeredItems;
     private CashRegister cashRegister;
     private SaleLog currentSaleLog;
+    private Cash totalPriceWithVAT;
 
     /**
      * 
@@ -45,13 +46,25 @@ public class Controller {
     public void endSale(){
     }
 
-    
+    /**
+     * Returns an array of all items bought by customer
+     * 
+     * @return an array of {@link se.kth.iv1350.seminartask.model.ScannedItem ScannedItem} 
+     * representing all bought items 
+     */
     public ArrayList<ScannedItem> getAllRegistered(){
         return this.registeredItems.getItems();
     }
 
 
-    
+    /**
+     * Searches item in registery and returns it while adding item and its amount to the <Code>RegisteredItems</Code> 
+     * 
+     * @param id the id of the seearched item
+     * @param amount  the amount of items to be bought
+     * @return {@link se.kth.iv1350.seminartask.util.ItemDTO ItemDTO} instance. 
+     * The value is null if id is not found in <Code>ItemRegistry</Code> 
+     */
     public ItemDTO selectItem(int id, int amount)
     {
         ItemDTO item = itemRegistry.searchItem(id);
@@ -64,11 +77,22 @@ public class Controller {
         return item;
     }
 
+    /**
+     * gets the change amount based on the given payment and sale total
+     * @param paidAmount the amount of money paid by customer
+     * @return change
+     */
     public Cash amountPaid(Cash paidAmount){
+    // totalPriceWithVAT = currentSaleLog.
+
         Cash change = cashRegister.addPayment(paidAmount, registeredItems.getTotalPrice());
         return change; 
     }
 
+    /**
+     * 
+     * @return
+     */
     public Cash getTotal(){
         currentSaleLog = new SaleLog();
         currentSaleLog.saveRegistredItems(registeredItems);
