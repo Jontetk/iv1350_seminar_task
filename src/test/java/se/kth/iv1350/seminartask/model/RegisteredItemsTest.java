@@ -63,10 +63,23 @@ class RegisteredItemsTest {
     @Test
     void testAddItemAlreadyExistCorrectArraySize() {
         ScannedItem newscScannedItem = new ScannedItem(item2, 10);
-        int excpectedsize = regItems.getItems().size();
+        int excpectedsize = 4;
         regItems.addItem(newscScannedItem);
         int actualsize = regItems.getItems().size();
-        assertEquals(excpectedsize, actualsize,  "wrong");
+        assertEquals(excpectedsize, actualsize,  "Array size should not increase");
         
+    
     }
+    @Test
+    void testAddItemAlreadyExistCorrectAmount() {
+        ScannedItem newscScannedItem = new ScannedItem(item2, 10);
+        int excpectedAmount = 5+10;
+        regItems.addItem(newscScannedItem);
+
+        int indexItem2 = regItems.getItems().indexOf(newscScannedItem);  
+        int actualAmount = regItems.getItems().get(indexItem2).getAmount();
+        assertEquals(excpectedAmount, actualAmount, "Amounts after item adding is not correct");
+
+    }
+
 }
