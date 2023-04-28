@@ -31,8 +31,5 @@ public class SaleLog {
     public void saveChange(Cash change) {
         this.change = change;
     }
-    
-    /*TODO implement other methods of the class */
-    
 
 }
