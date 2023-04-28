@@ -23,7 +23,7 @@ public class ItemRegistry {
      * Searches through the item database for an item with a certain item id
      * 
      * @param id The item of the wanted item
-     * @return The <code>ItemDTO</code> for the wanted item
+     * @return The {@link se.kth.iv1350.seminartask.util.ItemDTO ItemDTO} for the wanted item
      */
     public ItemDTO searchItem (int id) {
         for (ItemDTO item : items) {
