@@ -1,14 +1,17 @@
 package se.kth.iv1350.seminartask.controller;
 
+import java.util.ArrayList;
+
 import se.kth.iv1350.seminartask.integration.*;
 import se.kth.iv1350.seminartask.model.*;
 import se.kth.iv1350.seminartask.util.Cash;
+import se.kth.iv1350.seminartask.util.ItemDTO;
 
 public class Controller {
     ItemRegistry itemRegistry;
     AccountingRegistry accountingRegistry;
     Printer printer;
-    RegisteredItems regItems;
+    RegisteredItems registeredItems;
     CashRegister cashRegister;
 
     /**
@@ -29,7 +32,42 @@ public class Controller {
      * Initate new object to store all bought items during sale
      */
     public void startSale(){
-        this.regItems = new RegisteredItems();
+        this.registeredItems = new RegisteredItems();
      
+    }
+
+    /*TODO  think about endSale method */
+    public void endSale(){
+    }
+
+    
+    public ArrayList<ScannedItem> getAllRegistered(){
+        return this.registeredItems.getItems();
+    }
+
+
+    /*TODO COMPLETE THIS IF NEEDED */
+    public ItemDTO selectItem(int id, int amount)
+    {
+        ItemDTO item = itemRegistry.searchItem(id);
+        boolean itemFound = item != null;
+        if(itemFound)
+            {
+                ScannedItem currentScanneditem = new ScannedItem(item, amount);
+                registeredItems.addItem(currentScanneditem);
+            }
+        return item;
+    }
+
+     // NOT IMPLELEMTED
+    public Cash amountPaid(Cash paidAmount){
+
+        return null; /*Temp return val */
+    }
+
+    // NOT IMPLELEMTED
+    public SaleLog getReceipt(){
+
+        return null; // temporary
     }
 }
