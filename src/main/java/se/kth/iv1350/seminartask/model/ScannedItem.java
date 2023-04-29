@@ -38,6 +38,13 @@ public class ScannedItem {
 	}
     
     
+    /**
+     * Checks if two <code>scannedItem</code> instances' 
+     * {@link se.kth.iv1350.seminartask.util.ItemDTO item}'s has same <code>id</code>
+     * @param 
+     * @return <code>True</code> if both object of class have <code>scannedItem</code> same id 
+     *  <code>False</code> otherwise
+     */
     @Override
     public boolean equals(Object obj) {
         if(obj == null)
