@@ -35,5 +35,12 @@ public class CashRegisterTest {
         assertEquals(excpectedChange, actualChange, "Change was not the value it should have been");
         
     }
+
+    @Test 
+    void voidtestAddPaymentInsufficientPaymentForTotalPrice(){
+        double excpectedChange = 0;
+        double actualChange = register.addPayment(new Cash(10, "I$"), new Cash(30, "I$")).getAmount();
+        assertEquals(excpectedChange, actualChange,"What?");
+    }
     
 }

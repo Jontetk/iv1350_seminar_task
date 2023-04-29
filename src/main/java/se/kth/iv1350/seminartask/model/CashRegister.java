@@ -17,11 +17,13 @@ public class CashRegister {
         this.cashInRegister = cashInRegister;
 	
 	}
+
+        // TODO Handle negative Values
         /**
          * Adds the paid amount to the <code>CashRegister</code> and returns the change that should be given to the customer
         * @param paidAmount The amount the customer paid
         * @param totalPrice The price of the total sale
-        * @return The change that the customer should get back
+        * @return The change that the customer should get back. 
         */
 	public Cash addPayment(Cash paidAmount,Cash totalPrice) { 
                 if (paidAmount.getCurrency() != "I$"){

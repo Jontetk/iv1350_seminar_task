@@ -1,10 +1,10 @@
 package se.kth.iv1350.seminartask.util;
 
-public class ItemDTO {
-    private int ItemID;
-    private String description;
-    private Cash price;
-    private double VatRate;
+public final class ItemDTO {
+    private final int ItemID;
+    private final String description;
+    private final Cash price;
+    private final double VatRate;
     /**
      * 
      * @param ItemID The id for the item
