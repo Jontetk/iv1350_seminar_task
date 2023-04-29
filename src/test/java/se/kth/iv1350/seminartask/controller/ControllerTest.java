@@ -2,6 +2,7 @@ package se.kth.iv1350.seminartask.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -10,10 +11,19 @@ import se.kth.iv1350.seminartask.integration.RegistryCreator;
 
 
 public class ControllerTest {
+
+    private Controller controller;
+    
+    
+
     RegistryCreator registryCreator = new RegistryCreator();
 
-    Controller controller = new Controller(registryCreator, null);
-     
+
+    @BeforeEach
+    void setUp() {
+        controller = new Controller(registryCreator, null);
+        controller.startSale();
+    }
        
    
     @ParameterizedTest 
