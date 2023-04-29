@@ -1,14 +1,15 @@
 package se.kth.iv1350.seminartask.integration;
 import se.kth.iv1350.seminartask.util.*;
+import se.kth.iv1350.seminartask.model.*;
 public class ItemRegistry {
     
     // Local attributes to simulate an external database
 
-    private ItemDTO[] items = {new ItemDTO(1,"Milk",(new Cash(15,"I$")),0.34),
-    new ItemDTO(2,"Iphone",new Cash(1500000,"I$"),0.01),
-    new ItemDTO(3,"Pear",new Cash(150000000,"I$"),10),
-    new ItemDTO(4,"Cookie",new Cash(25,"I$"),0.21),
-    new ItemDTO(5,"Candy",new Cash(100,"I$"),0.1)};
+    private ItemDTO[] items = {new ItemDTO(1,"Milk",(new Cash(15,"I$")),0.34,100),
+    new ItemDTO(2,"Iphone",new Cash(1500000,"I$"),0.01,15000),
+    new ItemDTO(3,"Pear",new Cash(150000000,"I$"),10,60),
+    new ItemDTO(4,"Cookie",new Cash(25,"I$"),0.21,25),
+    new ItemDTO(5,"Candy",new Cash(100,"I$"),0.1,99999999)};
 
     /**
      * Communicates with an external item database
@@ -33,5 +34,20 @@ public class ItemRegistry {
         }
         return null;
 
+    }
+    /**
+     * Updates the inventory depending on which items were bought in the {@link se.kth.iv1350.seminartask.model.SaleLog SaleLog} 
+     * @param currentSaleLog The {@link se.kth.iv1350.seminartask.model.SaleLog SaleLog} containing the purchased items
+     */
+    public void updateInventory (SaleLog currentSaleLog) {
+        for(ScannedItem scannedItem : currentSaleLog.getScannedItems()) {
+            for (ItemDTO item : items) {
+                if (scannedItem.getItem().getItemID() == item.getItemID()) {
+                    item.saveStoredItems(item.getStoredItems()-scannedItem.getAmount());
+                    break;
+                }
+            }
+
+        }
     }
 }

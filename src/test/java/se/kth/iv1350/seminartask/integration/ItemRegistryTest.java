@@ -2,6 +2,8 @@ package se.kth.iv1350.seminartask.integration;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import se.kth.iv1350.seminartask.model.*;
+import se.kth.iv1350.seminartask.util.*;
 
 
 public class ItemRegistryTest {
@@ -24,6 +26,19 @@ public class ItemRegistryTest {
     @Test
     void testSearchItemWithInvalidId() {
         assertNull(itemReg.searchItem(-1), "Item with Inalid Id was fetched ");
+    }
+    @Test
+    void testUpdateInventory() {
+        ItemDTO item = new ItemDTO(1,"Milk",(new Cash(15,"I$")),0.34,100);
+        RegisteredItems regItems = new RegisteredItems();
+        regItems.addItem(item, 10);
+        SaleLog currentSaleLog = new SaleLog();
+        currentSaleLog.saveRegistredItems(regItems);
+        itemReg.updateInventory(currentSaleLog);
+        int excpectedAmount = 90;
+        int actualAmount = itemReg.searchItem(1).getStoredItems();
+        assertEquals(excpectedAmount, actualAmount,"The amount was not correct");
+
     }
 
     

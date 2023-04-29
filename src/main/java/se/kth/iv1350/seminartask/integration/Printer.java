@@ -6,12 +6,12 @@ public class Printer {
     public Printer(){
 
     }
-
+    /**
+     * Prints The reciept using the data in the {@link se.kth.iv1350.seminartask.model.SaleLog SaleLog} 
+     * @param currentSaleLog The sale log that the printer should print the reciept using
+     */
     public void printReceipt(SaleLog currentSaleLog)
     {
-        /*TODO Test it see page 163. and fix float format
-         *
-         */
         for (ScannedItem item : currentSaleLog.getScannedItems()) {
             double itemPrice = item.getItem().getPrice().getAmount()*item.getAmount();
             double itemVat = item.getItem().getVatRate()*itemPrice; 
