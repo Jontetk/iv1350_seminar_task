@@ -5,19 +5,23 @@ public final class ItemDTO {
     private final String description;
     private final Cash price;
     private final double VatRate;
+    private int storedItems;
+
     /**
      * 
      * @param ItemID The id for the item
      * @param description The description for the item
      * @param price The price of the item as a <code>Cash</code> object
      * @param vatRate The VatRate of the item
+     * @param storedItems The amount of items that is stored in the inventory
      */
 
-    public ItemDTO(int ItemID, String description, Cash price,double vatRate) {
+     public ItemDTO(int ItemID, String description, Cash price,double vatRate,int storedItems) {
         this.ItemID = ItemID;
         this.description = description;
         this.price = price;
         this.VatRate = vatRate;
+        this.storedItems = storedItems;
     }
     /**
      * 
@@ -48,6 +52,12 @@ public final class ItemDTO {
      */
     public double getVatRate() {
         return this.VatRate; 
+    }
+    public int getStoredItems() {
+        return this.storedItems;
+    }
+    public void saveStoredItems(int storeditems) {
+        this.storedItems = storeditems;
     }
     
 }

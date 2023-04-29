@@ -17,9 +17,9 @@ import org.junit.jupiter.api.BeforeEach;
     private ScannedItem scannedItemThree;
     @BeforeEach
     void Setup(){
-        ItemDTO itemOne = new ItemDTO(1, null, null, 0);
-        ItemDTO itemTwo = new ItemDTO(2, null, null, 0);
-        ItemDTO itemThree = new ItemDTO(1, null, null, 0);
+        ItemDTO itemOne = new ItemDTO(1, null, null, 0,1);
+        ItemDTO itemTwo = new ItemDTO(2, null, null, 0,1);
+        ItemDTO itemThree = new ItemDTO(1, null, null, 0,1);
         scannedItemOne = new ScannedItem(itemOne, 10);
         scannedItemTwo = new ScannedItem(itemTwo, 5);
         scannedItemThree = new ScannedItem(itemThree,15);

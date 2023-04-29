@@ -24,10 +24,10 @@ class RegisteredItemsTest {
 
     @BeforeEach
     void Setup() {
-        item1 = new ItemDTO(1, null, new Cash(10, "I$"), 0.1);
-        item2 = new ItemDTO(2, null, new Cash(20, "I$"), 0.2);
-        item3 = new ItemDTO(3, null, new Cash(30, "I$"), 0.3);
-        item4 = new ItemDTO(4, null, new Cash(40, "I$"), 0.4);
+        item1 = new ItemDTO(1, null, new Cash(10, "I$"), 0.1,1);
+        item2 = new ItemDTO(2, null, new Cash(20, "I$"), 0.2,1);
+        item3 = new ItemDTO(3, null, new Cash(30, "I$"), 0.3,1);
+        item4 = new ItemDTO(4, null, new Cash(40, "I$"), 0.4,1);
 
         scanneditem1 = new ScannedItem(item1, 2);
         scanneditem2 = new ScannedItem(item2, 5);
@@ -45,7 +45,7 @@ class RegisteredItemsTest {
     void testCreatingRegestredItem() {
         RegisteredItems newRegItems = new RegisteredItems();
         Cash currentCash = new Cash(40, "I$");
-        ItemDTO newItem = new ItemDTO(5, null,currentCash, 0.4);
+        ItemDTO newItem = new ItemDTO(5, null,currentCash, 0.4,1);
         newRegItems.addItem(newItem, 1);
 
         assertEquals(newRegItems.getItems().get(0).getItem(), newItem, "The Item was not added correctly");
@@ -54,14 +54,14 @@ class RegisteredItemsTest {
     }
     @Test
     void testAddNewItemContainsNewItem() {
-        ItemDTO newItem = new ItemDTO(5, null, new Cash(40, "I$"), 0.4);
+        ItemDTO newItem = new ItemDTO(5, null, new Cash(40, "I$"), 0.4,1);
         ScannedItem newScannedItem = new ScannedItem(newItem, 1);
         regItems.addItem(newItem, 1);
         assertTrue(regItems.getItems().contains(newScannedItem));
     }
     @Test
     void testAddNewItemCorrectVatAndPrice() {
-        ItemDTO newItem = new ItemDTO(5, null, new Cash(40, "I$"), 0.4);
+        ItemDTO newItem = new ItemDTO(5, null, new Cash(40, "I$"), 0.4,1);
         regItems.addItem(newItem, 1);
         double excpectedcashamount = 470;
         double excpectedvatamount = 159;
