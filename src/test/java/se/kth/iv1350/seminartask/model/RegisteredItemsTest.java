@@ -34,10 +34,10 @@ class RegisteredItemsTest {
         scanneditem3 = new ScannedItem(item3, 1);
         scanneditem4 = new ScannedItem(item4, 7);
         regItems = new RegisteredItems();
-        regItems.addItem(scanneditem1);
-        regItems.addItem(scanneditem2);
-        regItems.addItem(scanneditem3);
-        regItems.addItem(scanneditem4);
+        regItems.addItem(item1,2);
+        regItems.addItem(item2,5);
+        regItems.addItem(item3,1);
+        regItems.addItem(item4,7);
 
        
     }
@@ -46,8 +46,7 @@ class RegisteredItemsTest {
         RegisteredItems newRegItems = new RegisteredItems();
         Cash currentCash = new Cash(40, "I$");
         ItemDTO newItem = new ItemDTO(5, null,currentCash, 0.4);
-        ScannedItem newScannedItem = new ScannedItem(newItem, 1);
-        newRegItems.addItem(newScannedItem);
+        newRegItems.addItem(newItem, 1);
 
         assertEquals(newRegItems.getItems().get(0).getItem(), newItem, "The Item was not added correctly");
 
@@ -56,15 +55,14 @@ class RegisteredItemsTest {
     @Test
     void testAddNewItemContainsNewItem() {
         ItemDTO newItem = new ItemDTO(5, null, new Cash(40, "I$"), 0.4);
-        ScannedItem newscScannedItem = new ScannedItem(newItem, 1);
-        regItems.addItem(newscScannedItem);
-        assertTrue(regItems.getItems().contains(newscScannedItem));
+        ScannedItem newScannedItem = new ScannedItem(newItem, 1);
+        regItems.addItem(newItem, 1);
+        assertTrue(regItems.getItems().contains(newScannedItem));
     }
     @Test
     void testAddNewItemCorrectVatAndPrice() {
         ItemDTO newItem = new ItemDTO(5, null, new Cash(40, "I$"), 0.4);
-        ScannedItem newscScannedItem = new ScannedItem(newItem, 1);
-        regItems.addItem(newscScannedItem);
+        regItems.addItem(newItem, 1);
         double excpectedcashamount = 470;
         double excpectedvatamount = 159;
         assertEquals(excpectedcashamount, regItems.totalPrice.getAmount(), "Total price does not match excpected");
@@ -72,9 +70,8 @@ class RegisteredItemsTest {
     }
     @Test
     void testAddItemAlreadyExistCorrectArraySize() {
-        ScannedItem newscScannedItem = new ScannedItem(item2, 10);
         int excpectedsize = 4;
-        regItems.addItem(newscScannedItem);
+        regItems.addItem(item2, 10);
         int actualsize = regItems.getItems().size();
         assertEquals(excpectedsize, actualsize,  "Array size should not increase");
         
@@ -82,11 +79,11 @@ class RegisteredItemsTest {
     }
     @Test
     void testAddItemAlreadyExistCorrectAmount() {
-        ScannedItem newscScannedItem = new ScannedItem(item2, 10);
+        ScannedItem newScannedItem = new ScannedItem(item2, 10);
         int excpectedAmount = 5+10;
-        regItems.addItem(newscScannedItem);
+        regItems.addItem(item2, 10);
 
-        int indexItem2 = regItems.getItems().indexOf(newscScannedItem);  
+        int indexItem2 = regItems.getItems().indexOf(newScannedItem);  
         int actualAmount = regItems.getItems().get(indexItem2).getAmount();
         assertEquals(excpectedAmount, actualAmount, "Amounts after item adding is not correct");
 

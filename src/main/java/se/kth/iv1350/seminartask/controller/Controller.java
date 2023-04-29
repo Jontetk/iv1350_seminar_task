@@ -71,8 +71,7 @@ public class Controller {
         boolean itemFound = item != null;
         if(itemFound)
             {
-                ScannedItem currentScanneditem = new ScannedItem(item, amount);
-                registeredItems.addItem(currentScanneditem);
+                registeredItems.addItem(item,amount);
             }
         return item;
     }
@@ -89,12 +88,14 @@ public class Controller {
         Cash totalPriceWithVAT = new Cash(totalPriceAmount+totalVatAmount, currencyType);
 
         Cash change = cashRegister.addPayment(paidAmount, totalPriceWithVAT);
+        if (change != null )
+            currentSaleLog.saveChange(change);
         return change; 
     }
 
     /**
-     * 
-     * @return
+     * gets the current total
+     * @return the current total as a {@link se.kth.iv1350.seminartask.util.Cash Cash} object
      */
     public Cash getTotal(){
         currentSaleLog = new SaleLog();
@@ -105,7 +106,10 @@ public class Controller {
 
 
     
-    
+    /**
+     * gets the current SaleLog
+     * @return the current {@link se.kth.iv1350.seminartask.model.SaleLog SaleLog} 
+     */
     public SaleLog getReceipt(){
         accountingRegistry.saveSaleLog(currentSaleLog);
         printer.printReceipt(currentSaleLog);

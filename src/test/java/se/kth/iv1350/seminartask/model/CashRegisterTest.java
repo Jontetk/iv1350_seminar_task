@@ -39,9 +39,9 @@ public class CashRegisterTest {
     // Update the test after fixing implementaion for handling negative change.
     @Test 
     void testAddPaymentInsufficientPaymentForTotalPrice(){
-        double excpectedChange = 0;
-        double actualChange = register.addPayment(new Cash(10, "I$"), new Cash(30, "I$")).getAmount();
-        assertEquals(excpectedChange, actualChange,"What?");
+
+        Cash actualChange = register.addPayment(new Cash(10, "I$"), new Cash(30, "I$"));
+        assertNull(actualChange,"Change should have been null when paid is less than total");
     }
     
 }

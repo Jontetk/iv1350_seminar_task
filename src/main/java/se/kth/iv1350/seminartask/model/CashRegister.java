@@ -27,15 +27,15 @@ private Cash cashInRegister;
     Change is null if the value would be negative.
     */
     public Cash addPayment(Cash paidAmount,Cash totalPrice) { 
-        if (paidAmount.getCurrency() != "I$"){
-        return null;
+        if (paidAmount.getCurrency() != totalPrice.getCurrency()){
+            return null;
     }
         double currentInReg = this.cashInRegister.getAmount();
         this.cashInRegister.saveAmount(currentInReg+totalPrice.getAmount());
         if (paidAmount.getAmount()-totalPrice.getAmount() < 0) 
             return null;
         else
-            return new Cash(paidAmount.getAmount()-totalPrice.getAmount(),"I$");
+            return new Cash(paidAmount.getAmount()-totalPrice.getAmount(),totalPrice.getCurrency());
 		
 	}
         /**
