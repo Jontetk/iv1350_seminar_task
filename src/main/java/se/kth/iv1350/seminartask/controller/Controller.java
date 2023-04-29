@@ -58,7 +58,8 @@ public class Controller {
 
 
     /**
-     * Searches item in registery and returns it while adding item and its amount to the <Code>RegisteredItems</Code> 
+     * Searches item in registery and returns it while adding item 
+     * and its amount to the <Code>RegisteredItems</Code> 
      * 
      * @param id the id of the seearched item
      * @param amount  the amount of items to be bought
@@ -74,6 +75,17 @@ public class Controller {
                 registeredItems.addItem(item,amount);
             }
         return item;
+    }
+
+    /**
+     * The selectItem method for when amount is not given. The amount defaults to 1.
+     * 
+     * @param id the id of the seearched item
+     * @return {@link se.kth.iv1350.seminartask.util.ItemDTO ItemDTO} instance. 
+     * The value is null if id is not found in <Code>ItemRegistry</Code> 
+     */
+    public ItemDTO selectItem(int id){
+        return selectItem(id ,1);
     }
 
     /**
