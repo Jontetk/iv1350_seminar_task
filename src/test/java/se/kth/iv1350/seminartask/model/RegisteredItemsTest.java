@@ -33,30 +33,40 @@ class RegisteredItemsTest {
         scanneditem2 = new ScannedItem(item2, 5);
         scanneditem3 = new ScannedItem(item3, 1);
         scanneditem4 = new ScannedItem(item4, 7);
-        ArrayList<ScannedItem> items = new ArrayList<ScannedItem>();
-        items.add(scanneditem1);
-        items.add(scanneditem2);
-        items.add(scanneditem3);
-        items.add(scanneditem4);
-        Cash price = new Cash (100,"I$");
-        Cash vat = new Cash(30,"I$");
-        regItems = new RegisteredItems(items,price,vat);
-    }
+        regItems = new RegisteredItems();
+        regItems.addItem(scanneditem1);
+        regItems.addItem(scanneditem2);
+        regItems.addItem(scanneditem3);
+        regItems.addItem(scanneditem4);
 
+       
+    }
+    @Test
+    void testCreatingRegestredItem() {
+        RegisteredItems newRegItems = new RegisteredItems();
+        Cash currentCash = new Cash(40, "I$");
+        ItemDTO newItem = new ItemDTO(5, null,currentCash, 0.4);
+        ScannedItem newScannedItem = new ScannedItem(newItem, 1);
+        newRegItems.addItem(newScannedItem);
+
+        assertEquals(newRegItems.getItems().get(0).getItem(), newItem, "The Item was not added correctly");
+
+
+    }
     @Test
     void testAddNewItemContainsNewItem() {
-        ItemDTO newitem = new ItemDTO(5, null, new Cash(40, "I$"), 0.4);
-        ScannedItem newscScannedItem = new ScannedItem(newitem, 1);
+        ItemDTO newItem = new ItemDTO(5, null, new Cash(40, "I$"), 0.4);
+        ScannedItem newscScannedItem = new ScannedItem(newItem, 1);
         regItems.addItem(newscScannedItem);
         assertTrue(regItems.getItems().contains(newscScannedItem));
     }
     @Test
     void testAddNewItemCorrectVatAndPrice() {
-        ItemDTO newitem = new ItemDTO(5, null, new Cash(40, "I$"), 0.4);
-        ScannedItem newscScannedItem = new ScannedItem(newitem, 1);
+        ItemDTO newItem = new ItemDTO(5, null, new Cash(40, "I$"), 0.4);
+        ScannedItem newscScannedItem = new ScannedItem(newItem, 1);
         regItems.addItem(newscScannedItem);
-        double excpectedcashamount = 140;
-        double excpectedvatamount = 46;
+        double excpectedcashamount = 470;
+        double excpectedvatamount = 159;
         assertEquals(excpectedcashamount, regItems.totalPrice.getAmount(), "Total price does not match excpected");
         assertEquals(excpectedvatamount, regItems.totalVAT.getAmount(), "Total vat does not match excpected");
     }

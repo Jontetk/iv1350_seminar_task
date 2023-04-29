@@ -14,15 +14,6 @@ public class RegisteredItems {
         totalVAT = new Cash(0.0, "I$");
     }
 
-    /**
-     * 
-     * @param items
-     */
-    public RegisteredItems(ArrayList<ScannedItem> items, Cash price, Cash vat){
-        this.items = items;
-        this.totalPrice = price;
-        this.totalVAT = vat;
-    }
 
 
     public ArrayList<ScannedItem> getItems() {
