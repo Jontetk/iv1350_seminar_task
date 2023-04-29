@@ -15,7 +15,7 @@ public class Controller {
     private RegisteredItems registeredItems;
     private CashRegister cashRegister;
     private SaleLog currentSaleLog;
-    private Cash totalPriceWithVAT;
+    
 
     /**
      * 
@@ -83,9 +83,12 @@ public class Controller {
      * @return change
      */
     public Cash amountPaid(Cash paidAmount){
-    // totalPriceWithVAT = currentSaleLog.
+        double totalVatAmount = currentSaleLog.getTotalVAT().getAmount();
+        double totalPriceAmount = currentSaleLog.getTotalPrice().getAmount();
+        String currencyType = currentSaleLog.getTotalPrice().getCurrency();
+        Cash totalPriceWithVAT = new Cash(totalPriceAmount+totalVatAmount, currencyType);
 
-        Cash change = cashRegister.addPayment(paidAmount, registeredItems.getTotalPrice());
+        Cash change = cashRegister.addPayment(paidAmount, totalPriceWithVAT);
         return change; 
     }
 
