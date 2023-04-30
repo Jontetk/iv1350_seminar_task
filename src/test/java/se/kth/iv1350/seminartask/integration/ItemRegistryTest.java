@@ -29,7 +29,7 @@ public class ItemRegistryTest {
     }
     @Test
     void testUpdateInventory() {
-        ItemDTO item = new ItemDTO(1,"Milk",(new Cash(15,"I$")),0.34,100);
+        ItemDTO item = new ItemDTO(1,"Test_item_Do_Not_Change",(new Cash(1500,"I$")),0.04,100);
         RegisteredItems regItems = new RegisteredItems();
         regItems.addItem(item, 10);
         SaleLog currentSaleLog = new SaleLog();
