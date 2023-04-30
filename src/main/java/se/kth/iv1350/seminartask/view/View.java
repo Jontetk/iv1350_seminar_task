@@ -66,6 +66,14 @@ public class View {
         String currency = "I$";       
         Cash totalPay = new Cash(payment, currency);
         Cash change = controller.calculateChange(totalPay);
+        while (change == null) {
+            out.println("\nThat is not enoguh. Total price to pay:"+totalPrice.getAmount() +totalPrice.getCurrency());
+            out.print("Payment:");
+            payment = scanner.nextDouble();
+            currency = "I$";       
+            totalPay = new Cash(payment, currency);
+            change = controller.calculateChange(totalPay);
+        }
         out.println("Change:"+change.getAmount()+change.getCurrency()+"\n");
         SaleLog currentSaleLog = controller.getReceipt();
         for (ScannedItem item : currentSaleLog.getScannedItems()) {
