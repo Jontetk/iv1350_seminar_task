@@ -19,10 +19,19 @@ import se.kth.iv1350.seminartask.util.*;
 
 
 public class ControllerTest {
+
+    private Controller controller;
+    
+    
+
     RegistryCreator registryCreator = new RegistryCreator();
 
-    Controller controller = new Controller(registryCreator, null);
-     
+
+    @BeforeEach
+    void setUp() {
+        controller = new Controller(registryCreator, null);
+        controller.startSale();
+    }
        
    
     @ParameterizedTest 
