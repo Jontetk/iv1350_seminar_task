@@ -43,7 +43,7 @@ public class ControllerTest {
 
 
     @ParameterizedTest
-    @ValueSource(ints = {-1, 0, 7, 10})
+    @ValueSource(ints = {-1, 0, -7, -10})
     void testSelectItemInvalidIds(int id) {
         assertNull(controller.selectItem(id),"invalid item fetched");
 
@@ -69,6 +69,7 @@ public class ControllerTest {
     void testAmountPaidForSmallPayment(int id) {
         double paidAmount = Double.MIN_VALUE;
         controller.selectItem(id, 4);
+        controller.getTotal();
         Cash actualChangeAmount = controller.calculateChange(new Cash(paidAmount, "I$"));
         assertNull(actualChangeAmount,"Wrong change amount");
     }

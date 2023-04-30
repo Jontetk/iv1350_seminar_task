@@ -11,7 +11,7 @@ public class ItemRegistry {
     new ItemDTO(4,"Pear",new Cash(150000000,"I$"),10,60),
     new ItemDTO(5,"Cookie",new Cash(25,"I$"),0.21,25),
     new ItemDTO(6,"Candy",new Cash(100,"I$"),0.1,99999999),
-    new ItemDTO(7,"Milk",(new Cash(15,"I$")),0.34,100)};
+    new ItemDTO(7,"Milk",(new Cash(15,"I$")),0.3,100)};
 
     /**
      * Communicates with an external item database

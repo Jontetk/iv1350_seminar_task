@@ -3,7 +3,11 @@ package se.kth.iv1350.seminartask.model;
 import se.kth.iv1350.seminartask.util.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-
+/**
+ * 
+ * A log that saves the entire sale
+ * 
+ */
 public class SaleLog {
     
     private LocalDateTime saleDate;

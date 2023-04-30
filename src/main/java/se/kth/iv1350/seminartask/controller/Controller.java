@@ -9,6 +9,11 @@ import se.kth.iv1350.seminartask.model.*;
 import se.kth.iv1350.seminartask.util.Cash;
 import se.kth.iv1350.seminartask.util.ItemDTO;
 
+
+/**
+ * 
+ * Controller for running the program
+ */
 public class Controller {
     private ItemRegistry itemRegistry;
     private AccountingRegistry accountingRegistry;

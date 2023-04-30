@@ -5,6 +5,13 @@ import static java.lang.System.out;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
+
+
+/**
+ * 
+ * Object that represents a printer that should print the reciept
+ * 
+ */
 public class Printer {
     
     /**
@@ -38,8 +45,8 @@ public class Printer {
         recieptPrintStream.println("Total with VAT: " + totalPriceWithVat);
         recieptPrintStream.println("Total VAT: "+ totalVat);
         recieptPrintStream.println("Change: "+currentSaleLog.getChange().getAmount());
-        out.println("\n"+currentSaleLog.getSaleDate().getYear()+"-"+currentSaleLog.getSaleDate().getMonthValue()+"-"+currentSaleLog.getSaleDate().getDayOfMonth());
-        out.println(currentSaleLog.getSaleDate().getHour()+":"+currentSaleLog.getSaleDate().getMinute());
+        recieptPrintStream.println("\n"+currentSaleLog.getSaleDate().getYear()+"-"+currentSaleLog.getSaleDate().getMonthValue()+"-"+currentSaleLog.getSaleDate().getDayOfMonth());
+        recieptPrintStream.print(currentSaleLog.getSaleDate().getHour()+":"+currentSaleLog.getSaleDate().getMinute()+":"+currentSaleLog.getSaleDate().getSecond());
         recieptPrintStream.close();
     }
 }

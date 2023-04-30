@@ -2,7 +2,10 @@ package se.kth.iv1350.seminartask.model;
 import se.kth.iv1350.seminartask.util.*;
 
 
-
+/**
+ * 
+ * Holds the cash in the register
+ */
 public class CashRegister {
     
 private Cash cashInRegister;

@@ -1,5 +1,11 @@
 package se.kth.iv1350.seminartask.util;
 
+
+
+/**
+ * A data object for the items
+ * 
+ */
 public final class ItemDTO {
     private final int ItemID;
     private final String description;

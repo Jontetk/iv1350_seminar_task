@@ -3,6 +3,11 @@ package se.kth.iv1350.seminartask.model;
 
 import se.kth.iv1350.seminartask.util.*;
 import java.util.ArrayList;
+
+/**
+ * The registred items for the current sale
+ * 
+ */
 public class RegisteredItems {
     ArrayList<ScannedItem> items;
     Cash totalPrice;

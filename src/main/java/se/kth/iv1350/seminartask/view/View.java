@@ -9,8 +9,16 @@ import java.io.IOException;
 
 import static java.lang.System.in;
 import java.util.Scanner;
-
+/**
+ * 
+ * The view which communicates with the user
+ */
 public class View {
+    /**
+     * The view which communicates with the controller and the user
+     * @param controller the {@link se.kth.iv1350.seminartask.controller Controller} that the view should use 
+     * 
+     */
     public View(Controller controller) throws IOException{
         Scanner scanner = new Scanner(in);
         controller.startSale();
@@ -24,6 +32,10 @@ public class View {
             itemID = scanner.nextInt();
             out.print("\nAmount:");
             amount = scanner.nextInt();
+            while (amount <= 0) {
+                out.print("\nAmount:");
+                amount = scanner.nextInt();
+            }
             out.println("\nThe current items are:\n");
             if (controller.getAllRegistered().size() != 0){
 
@@ -34,9 +46,10 @@ public class View {
                 }
             }
             selectedItem = controller.selectItem(itemID,amount);
-            if (selectedItem != null)
+            if (selectedItem != null){
+                out.println("Last scanned item:");
                 out.println(selectedItem.getDescription()+" x "+amount+"\n");
-            
+            }
             
             else
                 out.println("The last item was invalid please try again\n");
@@ -69,7 +82,7 @@ public class View {
         out.println("Total VAT: "+ totalVat);
         out.println("Change: "+currentSaleLog.getChange().getAmount());
         out.println("\n"+currentSaleLog.getSaleDate().getYear()+"-"+currentSaleLog.getSaleDate().getMonthValue()+"-"+currentSaleLog.getSaleDate().getDayOfMonth());
-        out.println(currentSaleLog.getSaleDate().getHour()+":"+currentSaleLog.getSaleDate().getMinute());
+        out.println(currentSaleLog.getSaleDate().getHour()+":"+currentSaleLog.getSaleDate().getMinute()+":"+currentSaleLog.getSaleDate().getSecond());
 
         controller.endSale();
         scanner.close();
