@@ -119,7 +119,7 @@ public class Controller {
 
     
     /**
-     * gets the current SaleLog
+     * Saves the SaleLog to accounting and prints it, then gets the current SaleLog
      * @return the current {@link se.kth.iv1350.seminartask.model.SaleLog SaleLog} 
      */
     public SaleLog getReceipt(){
