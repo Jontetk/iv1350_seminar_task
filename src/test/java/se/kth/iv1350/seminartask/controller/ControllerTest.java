@@ -55,8 +55,12 @@ public class ControllerTest {
 
     @Test
     void testAmountPaid() {
-        controller.selectItem(1, 1); //15 dollars per unit
-        controller.selectItem(4)
+        double paidAmount = 100;
+        ItemDTO item =controller.selectItem(1); // costs 15 I$
+
+        double actualChangeAmount = controller.calculateChange(new Cash(paidAmount, "I$")).getAmount();
+
+
 
     }
 
@@ -67,3 +71,5 @@ public class ControllerTest {
 
 
 }
+
+

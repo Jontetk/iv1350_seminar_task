@@ -6,7 +6,7 @@ public class ItemRegistry {
     // Local attributes to simulate an external database
 
     private ItemDTO[] items = {new ItemDTO(1,"Test_item_Do_Not_Change",(new Cash(1500,"I$")),0.04,100),
-    new ItemDTO(2,"Test_item2_Do_Not_Change",(new Cash(1500,"I$")),0.04,100),
+    new ItemDTO(2,"Test_item2_Do_Not_Change",(new Cash(35,"I$")),0.04,100),
     new ItemDTO(3,"Iphone",new Cash(1500000,"I$"),0.01,15000),
     new ItemDTO(4,"Pear",new Cash(150000000,"I$"),10,60),
     new ItemDTO(5,"Cookie",new Cash(25,"I$"),0.21,25),

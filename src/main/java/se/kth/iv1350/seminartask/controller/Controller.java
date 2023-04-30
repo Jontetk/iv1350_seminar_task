@@ -93,7 +93,7 @@ public class Controller {
      * @param paidAmount the amount of money paid by customer
      * @return change
      */
-    public Cash amountPaid(Cash paidAmount){
+    public Cash calculateChange(Cash paidAmount){
         double totalVatAmount = currentSaleLog.getTotalVAT().getAmount();
         double totalPriceAmount = currentSaleLog.getTotalPrice().getAmount();
         String currencyType = currentSaleLog.getTotalPrice().getCurrency();
