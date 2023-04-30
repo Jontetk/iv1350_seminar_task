@@ -3,6 +3,7 @@ import se.kth.iv1350.seminartask.model.*;
 import static java.lang.System.out;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.PrintStream;
 public class Printer {
     
@@ -19,7 +20,7 @@ public class Printer {
      * Total with and without VAT and chage for the sale is also given on the receipt
      * @param currentSaleLog the log for the current sale. 
      */
-    public void printReceipt(SaleLog currentSaleLog)
+    public void printReceipt(SaleLog currentSaleLog) throws IOException
     {
         File file = new File("reciept.txt");
         file.createNewFile();
@@ -37,7 +38,8 @@ public class Printer {
         recieptPrintStream.println("Total with VAT: " + totalPriceWithVat);
         recieptPrintStream.println("Total VAT: "+ totalVat);
         recieptPrintStream.println("Change: "+currentSaleLog.getChange().getAmount());
-
-
+        out.println("\n"+currentSaleLog.getSaleDate().getYear()+"-"+currentSaleLog.getSaleDate().getMonthValue()+"-"+currentSaleLog.getSaleDate().getDayOfMonth());
+        out.println(currentSaleLog.getSaleDate().getHour()+":"+currentSaleLog.getSaleDate().getMinute());
+        recieptPrintStream.close();
     }
 }

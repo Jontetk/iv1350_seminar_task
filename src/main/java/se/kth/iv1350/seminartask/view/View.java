@@ -1,15 +1,17 @@
 package se.kth.iv1350.seminartask.view;
-import java.util.ArrayList;
 import se.kth.iv1350.seminartask.model.*;
 import se.kth.iv1350.seminartask.util.ItemDTO;
 import se.kth.iv1350.seminartask.controller.*;
 import se.kth.iv1350.seminartask.util.*;
 import static java.lang.System.out;
+
+import java.io.IOException;
+
 import static java.lang.System.in;
 import java.util.Scanner;
 
 public class View {
-    public View(Controller controller) {
+    public View(Controller controller) throws IOException{
         Scanner scanner = new Scanner(in);
         controller.startSale();
         boolean scanning = true;
@@ -45,10 +47,32 @@ public class View {
             
         }
         Cash totalPrice = controller.getTotal();
-        out.println("Total price to pay:"+totalPrice.getAmount() +totalPrice.getCurrency());
-        out.println("Payment:");
-        
-  
+        out.println("\nTotal price to pay:"+totalPrice.getAmount() +totalPrice.getCurrency());
+        out.print("Payment:");
+        double payment = scanner.nextDouble();
+        String currency = "I$";       
+        Cash totalPay = new Cash(payment, currency);
+        Cash change = controller.calculateChange(totalPay);
+        out.println("Change:"+change.getAmount()+change.getCurrency()+"\n");
+        SaleLog currentSaleLog = controller.getReceipt();
+        for (ScannedItem item : currentSaleLog.getScannedItems()) {
+            double itemPrice = item.getItem().getPrice().getAmount()*item.getAmount();
+            double itemVat = item.getItem().getVatRate()*itemPrice; 
+            String itemCurrency = item.getItem().getPrice().getCurrency();
+            out.println(item.getItem().getDescription() +" x " + item.getAmount()+" "+ itemPrice+itemCurrency);
+            out.println("Unit price: "+ item.getItem().getPrice().getAmount()+itemCurrency+" VAT Price: "+itemVat+itemCurrency);
+            out.println("");
+        }
+        double totalPriceWithVat = currentSaleLog.getTotalPrice().getAmount() + currentSaleLog.getTotalVAT().getAmount();
+        double totalVat = currentSaleLog.getTotalVAT().getAmount();
+        out.println("Total with VAT: " + totalPriceWithVat);
+        out.println("Total VAT: "+ totalVat);
+        out.println("Change: "+currentSaleLog.getChange().getAmount());
+        out.println("\n"+currentSaleLog.getSaleDate().getYear()+"-"+currentSaleLog.getSaleDate().getMonthValue()+"-"+currentSaleLog.getSaleDate().getDayOfMonth());
+        out.println(currentSaleLog.getSaleDate().getHour()+":"+currentSaleLog.getSaleDate().getMinute());
 
-    }
+        controller.endSale();
+        scanner.close();
+    }   
+    
 }

@@ -3,18 +3,15 @@ package se.kth.iv1350.seminartask.controller;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-import java.nio.channels.SelectableChannel;
-import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import se.kth.iv1350.seminartask.integration.ItemRegistry;
+
 import se.kth.iv1350.seminartask.integration.RegistryCreator;
-import se.kth.iv1350.seminartask.model.RegisteredItems;
-import se.kth.iv1350.seminartask.model.ScannedItem;
+
 import se.kth.iv1350.seminartask.util.*;
 
 

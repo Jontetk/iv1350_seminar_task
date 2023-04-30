@@ -1,5 +1,6 @@
 package se.kth.iv1350.seminartask.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import se.kth.iv1350.seminartask.integration.*;
@@ -40,10 +41,11 @@ public class Controller {
     }
 
     /**
-     * @deprecated
+     * 
      * Not implemented
      */
     public void endSale(){
+
     }
 
     /**
@@ -127,7 +129,7 @@ public class Controller {
      * to accounting and prints it, then gets the current SaleLog
      * @return the current {@link se.kth.iv1350.seminartask.model.SaleLog SaleLog} 
      */
-    public SaleLog getReceipt(){
+    public SaleLog getReceipt()throws IOException {
         currentSaleLog.saveCurrentDate();
         accountingRegistry.saveSaleLog(currentSaleLog);
         printer.printReceipt(currentSaleLog);
