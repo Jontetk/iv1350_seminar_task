@@ -13,7 +13,7 @@ public class Main {
         RegistryCreator registryCreator = new RegistryCreator();
         Printer printer = new Printer();
         Controller controller = new Controller(registryCreator, printer);
-        View view = new View(controller);
+        new View(controller);
 
        
 

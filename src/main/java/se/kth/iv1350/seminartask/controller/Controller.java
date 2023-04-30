@@ -113,8 +113,11 @@ public class Controller {
     public Cash getTotal(){
         currentSaleLog = new SaleLog();
         currentSaleLog.saveRegistredItems(registeredItems);
-        Cash totalprice = registeredItems.getTotalPrice();
-        return totalprice;
+        double totalPrice = registeredItems.getTotalPrice().getAmount();
+        double totalVat = registeredItems.getTotalVAT().getAmount();
+        String currencyType = currentSaleLog.getTotalPrice().getCurrency();
+        Cash totalPriceWithVAT = new Cash(totalPrice+totalVat, currencyType);
+        return totalPriceWithVAT;
     }
 
 
