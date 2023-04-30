@@ -137,7 +137,8 @@ public class Controller {
 
     /**
      * 
-     * Not implemented
+     * save the log to the accounting registery
+     * and update inventory using the information in sale log
      */
     public void endSale(){
         accountingRegistry.saveSaleLog(currentSaleLog);
