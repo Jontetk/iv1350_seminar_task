@@ -1,2 +1,3 @@
 # iv1350_seminar_task
-The great seminar task
+Seminar task for seminar 3 
+by Jonathan Karlsson and Bathan Nur
