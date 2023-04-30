@@ -40,13 +40,7 @@ public class Controller {
      
     }
 
-    /**
-     * 
-     * Not implemented
-     */
-    public void endSale(){
-
-    }
+    
 
     /**
      * Returns an array of all items bought by customer
@@ -126,15 +120,22 @@ public class Controller {
     
     /**
      * 
-     * Saves the current date to SaleLog and Saves Salelog
-     * to accounting and prints it, then gets the current SaleLog
+     * Saves the current date to SaleLog ann prints a receipt, then gets the current SaleLog
      * @return the current {@link se.kth.iv1350.seminartask.model.SaleLog SaleLog} 
      */
     public SaleLog getReceipt()throws IOException {
         currentSaleLog.saveCurrentDate();
-        accountingRegistry.saveSaleLog(currentSaleLog);
+        
         printer.printReceipt(currentSaleLog);
         return currentSaleLog; 
     }
 
+
+    /**
+     * 
+     * Not implemented
+     */
+    public void endSale(){
+        accountingRegistry.saveSaleLog(currentSaleLog);s
+    }
 }
