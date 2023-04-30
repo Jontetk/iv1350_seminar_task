@@ -53,21 +53,24 @@ public class ControllerTest {
 
     }
 
+    
     @Test
     void testAmountPaid() {
-        double paidAmount = 100;
-        ItemDTO item =controller.selectItem(1); // costs 15 I$
+        double paidAmount = 100000;
+        ItemDTO item = controller.selectItem(2); 
+        controller.getTotal();
+        double itemsTotalPrice = item.getPrice().getAmount(); 
+        double itemVatAmount = item.getVatRate() * item.getPrice().getAmount();
+        double itemTotalPricewithVAT = itemVatAmount + itemsTotalPrice;
 
         double actualChangeAmount = controller.calculateChange(new Cash(paidAmount, "I$")).getAmount();
-
+        double expectedChangeAmount = paidAmount-itemTotalPricewithVAT;
+        assertEquals(expectedChangeAmount, actualChangeAmount,"Wrong change amount");
 
 
     }
 
-    @Test
-    void testGetTotal() {
-        
-    }
+    
 
 
 }
