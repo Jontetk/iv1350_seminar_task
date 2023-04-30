@@ -23,10 +23,7 @@ public class ControllerTest {
 
     Controller controller = new Controller(registryCreator, null);
      
-    @BeforeEach
-    void setup() {
-        controller.startSale();
-    }    
+       
    
     @ParameterizedTest 
     @ValueSource(ints = {1,2,3,4})
