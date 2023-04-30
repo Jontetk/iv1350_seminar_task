@@ -1,7 +1,10 @@
 package se.kth.iv1350.seminartask.model;
 import se.kth.iv1350.seminartask.util.*;
 
-
+/**
+ * A single {@link se.kth.iv1350.seminartask.util.ItemDTO ItemDTO} with an amount that has been registred 
+ * 
+ */
 public class ScannedItem {
     private ItemDTO item;
 	private int amount;

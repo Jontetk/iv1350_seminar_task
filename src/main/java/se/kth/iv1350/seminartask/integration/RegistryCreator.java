@@ -1,6 +1,9 @@
 package se.kth.iv1350.seminartask.integration;
 
-
+/**
+ * 
+ * Responsible for creating all the registries and returning them with gettters
+ */
 public class RegistryCreator {
     ItemRegistry itemRegistry;
     AccountingRegistry accountingRegistry;
@@ -16,16 +19,16 @@ public class RegistryCreator {
 
 
 /**
- * 
- * @return an item registry object 
+ * Gets an {@link se.kth.iv1350.seminartask.integration.ItemRegistry ItemRegistry} for later searching for items
+ * @return {@link se.kth.iv1350.seminartask.integration.ItemRegistry ItemRegistry} object 
  */
 public ItemRegistry getItemRegistry() {
     return itemRegistry;
 }
 
 /**
- * 
- * @return an account registry object
+ * Gets an {@link se.kth.iv1350.seminartask.integration.AccountingRegistry AccountingRegistry} for saving the {@link se.kth.iv1350.seminartask.model.SaleLog SaleLog}
+ * @return {@link se.kth.iv1350.seminartask.integration.AccountingRegistry AccountingRegistry} object
  */
 public AccountingRegistry getAccountingRegistry() {
     return accountingRegistry;
