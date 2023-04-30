@@ -14,7 +14,7 @@ public class SaleLog {
      * Constructor method for an object representing the log for this entire sale.
      */
     public SaleLog(){
-        this.saleDate = LocalDateTime.now();
+        
     }
 
     /**
@@ -57,6 +57,13 @@ public class SaleLog {
      */
     public Cash getTotalPrice () {
         return this.registeredItems.getTotalPrice();
+    }
+
+    /**
+     * Save the current date in ISO-8601 format. 
+     */
+    public void saveCurrentDate() {
+        this.saleDate = LocalDateTime.now();
     }
 
     /**
