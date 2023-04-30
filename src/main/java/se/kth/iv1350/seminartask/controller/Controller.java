@@ -130,7 +130,6 @@ public class Controller {
      */
     public SaleLog getReceipt()throws IOException {
         currentSaleLog.saveCurrentDate();
-        
         printer.printReceipt(currentSaleLog);
         return currentSaleLog; 
     }
@@ -141,6 +140,7 @@ public class Controller {
      * Not implemented
      */
     public void endSale(){
-        accountingRegistry.saveSaleLog(currentSaleLog);s
+        accountingRegistry.saveSaleLog(currentSaleLog);
+        itemRegistry.updateInventory(currentSaleLog);
     }
 }
