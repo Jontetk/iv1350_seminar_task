@@ -4,14 +4,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 
+
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 
 import se.kth.iv1350.seminartask.integration.RegistryCreator;
-
 import se.kth.iv1350.seminartask.util.*;
 
 
@@ -50,25 +49,29 @@ public class ControllerTest {
 
     }
 
-    
-    @Test
-    void testAmountPaid() {
-        double paidAmount = 100000;
-        ItemDTO item = controller.selectItem(2); 
-        controller.getTotal();
-        double itemsTotalPrice = item.getPrice().getAmount(); 
-        double itemVatAmount = item.getVatRate() * item.getPrice().getAmount();
-        double itemTotalPricewithVAT = itemVatAmount + itemsTotalPrice;
+
+    @ParameterizedTest
+    @ValueSource(ints = {1,2,3,4,5,6})
+    void testAmountPaidForBigPayment(int id) {
+        double paidAmount = Double.MAX_VALUE;
+        controller.selectItem(id, 4); 
+        double priceWithVAT = controller.getTotal().getAmount();
 
         double actualChangeAmount = controller.calculateChange(new Cash(paidAmount, "I$")).getAmount();
-        double expectedChangeAmount = paidAmount-itemTotalPricewithVAT;
+        double expectedChangeAmount = paidAmount-priceWithVAT;
         assertEquals(expectedChangeAmount, actualChangeAmount,"Wrong change amount");
-
-
     }
 
     
+    @ParameterizedTest
+    @ValueSource(ints = {1,2,3,4,5,6})
 
+    void testAmountPaidForSmallPayment(int id) {
+        double paidAmount = Double.MIN_VALUE;
+        controller.selectItem(id, 4);
+        Cash actualChangeAmount = controller.calculateChange(new Cash(paidAmount, "I$"));
+        assertNull(actualChangeAmount,"Wrong change amount");
+    }
 
 }
 

@@ -93,7 +93,8 @@ public class Controller {
     /**
      * gets the change amount based on the given payment and sale total
      * @param paidAmount the amount of money paid by customer
-     * @return change
+     * @return cash instance representing change, is null if paid amount is lower
+     * than the total payment needed
      */
     public Cash calculateChange(Cash paidAmount){
         double totalVatAmount = currentSaleLog.getTotalVAT().getAmount();
