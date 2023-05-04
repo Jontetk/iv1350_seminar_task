@@ -61,14 +61,14 @@ public final class ItemDTO {
     }
     /**
      * 
-     * @return The amount of the item stored for use in the {@link se.kth.iv1350.seminartask.integration.ItemRegistry ItemRegistry}
+     * @return The amount of the <code>itemDTO</code> stored for use in the {@link se.kth.iv1350.seminartask.integration.ItemRegistry ItemRegistry}
      */
     public int getStoredItems() {
         return this.storedItems;
     }
     /**
      * 
-     * @param storeditems The amount of the item stored for use in the {@link se.kth.iv1350.seminartask.integration.ItemRegistry ItemRegistry}
+     * @param storeditems The amount of the <code>itemDTO</code> stored for use in the {@link se.kth.iv1350.seminartask.integration.ItemRegistry ItemRegistry}
      */
     public void saveStoredItems(int storeditems) {
         this.storedItems = storeditems;
