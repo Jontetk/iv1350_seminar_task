@@ -57,7 +57,7 @@ class RegisteredItemsTest {
         ItemDTO newItem = new ItemDTO(5, null, new Cash(40, "I$"), 0.4,1);
         ScannedItem newScannedItem = new ScannedItem(newItem, 1);
         regItems.addItem(newItem, 1);
-        assertTrue(regItems.getItems().contains(newScannedItem));
+        assertTrue(regItems.getItems().contains(newScannedItem),"The item was not added correctly");
     }
     @Test
     void testAddNewItemCorrectVatAndPrice() {
