@@ -36,7 +36,6 @@ public class CashRegisterTest {
         
     }
 
-    // Update the test after fixing implementaion for handling negative change.
     @Test 
     void testAddPaymentInsufficientPaymentForTotalPrice(){
 
