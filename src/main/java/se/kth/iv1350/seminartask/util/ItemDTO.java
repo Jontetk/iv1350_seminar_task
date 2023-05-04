@@ -59,9 +59,17 @@ public final class ItemDTO {
     public double getVatRate() {
         return this.VatRate; 
     }
+    /**
+     * 
+     * @return The amount of the item stored for use in the {@link se.kth.iv1350.seminartask.integration.ItemRegistry ItemRegistry}
+     */
     public int getStoredItems() {
         return this.storedItems;
     }
+    /**
+     * 
+     * @param storeditems The amount of the item stored for use in the {@link se.kth.iv1350.seminartask.integration.ItemRegistry ItemRegistry}
+     */
     public void saveStoredItems(int storeditems) {
         this.storedItems = storeditems;
     }
