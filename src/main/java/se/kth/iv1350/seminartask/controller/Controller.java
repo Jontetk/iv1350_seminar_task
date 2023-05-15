@@ -143,13 +143,20 @@ public class Controller {
      * 
      * save the log to the accounting registery
      * and update inventory using the information in sale log
+     * @throws OperationFailedException if unable to save to the database
      */
-    public void endSale(){
+    public void endSale() throws OperationFailedException{
         try{
         accountingRegistry.saveSaleLog(currentSaleLog);
-        } catch (AccountingRegistryException accountRegException) {
+        } 
+        catch (AccountingRegistryException accountRegException) {
             throw new OperationFailedException("Could not save to the accounting database",accountRegException);
         }
+        try{
         itemRegistry.updateInventory(currentSaleLog);
+        } 
+        catch (ItemRegistryException itemRegException) {
+            throw new OperationFailedException("Could not save to the inventory database",itemRegException);
+        }
     }
 }

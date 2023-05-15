@@ -56,8 +56,12 @@ public class ItemRegistry {
     /**
      * Updates the inventory depending on which items were bought in the {@link se.kth.iv1350.seminartask.model.SaleLog SaleLog} 
      * @param currentSaleLog The {@link se.kth.iv1350.seminartask.model.SaleLog SaleLog} containing the purchased items
+     * @throws ItemRegistryException
      */
-    public void updateInventory (SaleLog currentSaleLog) {
+    public void updateInventory (SaleLog currentSaleLog) throws ItemRegistryException {
+        if (this.dataBaseAvailable == false) {
+            throw new ItemRegistryException("Registery Not running");
+        }
         for(ScannedItem scannedItem : currentSaleLog.getScannedItems()) {
             for (ItemDTO item : items) {
                 if (scannedItem.getItem().getItemID() == item.getItemID()) {
@@ -65,7 +69,7 @@ public class ItemRegistry {
                     break;
                 }
             }
-
+        
         }
     }
 }
