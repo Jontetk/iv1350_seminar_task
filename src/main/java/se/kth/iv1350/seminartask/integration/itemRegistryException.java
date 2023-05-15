@@ -1,11 +1,11 @@
 package se.kth.iv1350.seminartask.integration;
 
-public class itemRegistryException extends RuntimeException{
+public class ItemRegistryException extends RuntimeException{
     
-    itemRegistryException(){
+    ItemRegistryException(){
     } 
 
-    itemRegistryException(String message, Throwable cause){
+    ItemRegistryException(String message, Throwable cause){
         super(message, cause);
     }
 
