@@ -145,7 +145,11 @@ public class Controller {
      * and update inventory using the information in sale log
      */
     public void endSale(){
+        try{
         accountingRegistry.saveSaleLog(currentSaleLog);
+        } catch (AccountingRegistryException accountRegException) {
+            throw new OperationFailedException("Could not save to the accounting database",accountRegException);
+        }
         itemRegistry.updateInventory(currentSaleLog);
     }
 }
