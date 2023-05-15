@@ -34,8 +34,10 @@ public class ItemRegistry {
      * 
      * @param id The item of the wanted item
      * @return The {@link se.kth.iv1350.seminartask.util.ItemDTO ItemDTO} for the wanted item
+     *  
      */
-    public ItemDTO searchItem (int id) {
+    public ItemDTO searchItem (int id) throws ItemRegistryException
+    {
         if (this.dataBaseAvailable == false){
             throw new ItemRegistryException("Registery Not running");
             
