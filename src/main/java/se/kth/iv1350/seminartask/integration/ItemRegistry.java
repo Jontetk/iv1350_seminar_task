@@ -15,9 +15,6 @@ public class ItemRegistry {
     
     private boolean dataBaseAvailable = true;
 
-    public void setAvailability(boolean condition){
-        this.dataBaseAvailable = condition;
-    }
 
 
     /**
@@ -29,6 +26,10 @@ public class ItemRegistry {
     ItemRegistry () {
     
     }
+    public void setAvailability(boolean condition){
+        this.dataBaseAvailable = condition;
+    }
+
     /**
      * Searches through the item database for an item with a certain item id
      * 
