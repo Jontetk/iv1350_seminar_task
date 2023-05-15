@@ -34,9 +34,11 @@ public class ItemRegistry {
      * 
      * @param id The item of the wanted item
      * @return The {@link se.kth.iv1350.seminartask.util.ItemDTO ItemDTO} for the wanted item
-     *  
+     * @throws IdNotFoundException given id could not be found in the itemRegistry
+     * @throws ItemRegistryException an error occured in the registery
+     * 
      */
-    public ItemDTO searchItem (int id) throws ItemRegistryException
+    public ItemDTO searchItem (int id) throws ItemRegistryException, IdNotFoundException
     {
         if (this.dataBaseAvailable == false){
             throw new ItemRegistryException("Registery Not running");
