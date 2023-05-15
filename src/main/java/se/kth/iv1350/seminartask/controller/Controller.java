@@ -87,6 +87,8 @@ public class Controller {
      * @param id the id of the seearched item
      * @return {@link se.kth.iv1350.seminartask.util.ItemDTO ItemDTO} instance. 
      * The value is null if id is not found in <Code>ItemRegistry</Code> 
+     * @throws IdNotFoundException if given id could not be found in the itemRegistry
+     * @throws OperationFailedException if unable to do find item for any other reason.
      */
     public ItemDTO selectItem(int id) throws  IdNotFoundException, OperationFailedException
     {
