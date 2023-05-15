@@ -12,7 +12,8 @@ public class ItemRegistry {
     new ItemDTO(5,"Cookie",new Cash(25,"I$"),0.21,25),
     new ItemDTO(6,"Candy",new Cash(100,"I$"),0.1,99999999),
     new ItemDTO(7,"Milk",(new Cash(15,"I$")),0.3,100)};
-
+    
+    private boolean dataBaseRunning = true;
     /**
      * Communicates with an external item database
      *
@@ -29,6 +30,10 @@ public class ItemRegistry {
      * @return The {@link se.kth.iv1350.seminartask.util.ItemDTO ItemDTO} for the wanted item
      */
     public ItemDTO searchItem (int id) {
+        if (this.dataBaseRunning = false){
+            throw new ItemRegistryException("Registery Not running");
+            
+        }
         for (ItemDTO item : items) {
             if (item.getItemID() == id) 
                 return item;

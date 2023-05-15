@@ -5,8 +5,8 @@ public class ItemRegistryException extends RuntimeException{
     ItemRegistryException(){
     } 
 
-    ItemRegistryException(String message, Throwable cause){
-        super(message, cause);
+    ItemRegistryException(String message){
+        super(message);
     }
 
 
