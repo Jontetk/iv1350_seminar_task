@@ -39,7 +39,7 @@ public class ItemRegistry {
                 return item;
             
         }
-        return null;
+        throw new IdNotFoundException("The ID "+id+"was not found");
 
     }
     /**
