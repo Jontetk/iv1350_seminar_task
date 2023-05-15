@@ -66,8 +66,10 @@ public class Controller {
      * @param amount  the amount of items to be bought
      * @return {@link se.kth.iv1350.seminartask.util.ItemDTO ItemDTO} instance. 
      * The value is null if id is not found in <Code>ItemRegistry</Code> 
+     * @throws IdNotFoundException if given id could not be found in the itemRegistry
+     * @throws OperationFailedException if unable to do find item for any other reason.
      */
-    public ItemDTO selectItem(int id, int amount) throws  IdNotFoundException, ItemNotFoundException,
+    public ItemDTO selectItem(int id, int amount) throws  IdNotFoundException, OperationFailedException
     {   
         ItemDTO item = null;
         try {
@@ -86,7 +88,8 @@ public class Controller {
      * @return {@link se.kth.iv1350.seminartask.util.ItemDTO ItemDTO} instance. 
      * The value is null if id is not found in <Code>ItemRegistry</Code> 
      */
-    public ItemDTO selectItem(int id){
+    public ItemDTO selectItem(int id) throws  IdNotFoundException, OperationFailedException
+    {
         return selectItem(id ,1);
     }
 
