@@ -67,14 +67,15 @@ public class Controller {
      * @return {@link se.kth.iv1350.seminartask.util.ItemDTO ItemDTO} instance. 
      * The value is null if id is not found in <Code>ItemRegistry</Code> 
      */
-    public ItemDTO selectItem(int id, int amount)
-    {
-        ItemDTO item = itemRegistry.searchItem(id);
-        boolean itemFound = item != null;
-        if(itemFound)
-            {
-                registeredItems.addItem(item,amount);
-            }
+    public ItemDTO selectItem(int id, int amount) throws  IdNotFoundException, ItemNotFoundException,
+    {   
+        ItemDTO item = null;
+        try {
+            item = itemRegistry.searchItem(id);
+        } catch (ItemRegistryException itemRegExc) {
+            throw new OperationFailedException("Could not find the item.",itemRegExc);
+        }
+       
         return item;
     }
 
