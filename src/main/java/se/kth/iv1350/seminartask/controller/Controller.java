@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 import java.util.logging.Logger.*;
 
 import se.kth.iv1350.seminartask.integration.*;
@@ -41,7 +42,9 @@ public class Controller {
         this.accountingRegistry = creator.getAccountingRegistry();
         this.cashRegister = new CashRegister(new Cash(10000,"I$"));
         try {
-            logger.addHandler(new FileHandler("controller%g.log"));
+        FileHandler handler = new FileHandler("controller%g.log");
+        // handler.setFormatter(new SimpleFormatter());
+            logger.addHandler(handler);
         } catch (Exception e) {}
 
     }
