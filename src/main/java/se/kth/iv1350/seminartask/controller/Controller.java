@@ -41,7 +41,7 @@ public class Controller {
         this.accountingRegistry = creator.getAccountingRegistry();
         this.cashRegister = new CashRegister(new Cash(10000,"I$"));
         try {
-            logger.addHandler(new FileHandler());
+            logger.addHandler(new FileHandler("java%g.log"));
         } catch (Exception e) {}
         logger.log(Level.SEVERE, "Test");
 
