@@ -29,13 +29,7 @@ public class ItemRegistryTest {
         
     }
 
-    @Test
-    void testSearchItemWithInvalidId() {
-        try {
-            assertNull(itemReg.searchItem(-1), "Item with Inalid Id was fetched ");
-        } catch (Exception e) {}
-        
-    }
+   
     @Test
     void testUpdateInventory() {
         int actualAmount=0;
@@ -55,6 +49,16 @@ public class ItemRegistryTest {
 
     }
 
-    
+    @Test
+    void testSearchItemWithInvalidId() {
+        int id = -1; 
+        try {
+            itemReg.searchItem(id);
+            fail("Succesfully searched with item that does not exist in registry");
+        } catch (IdNotFoundException idExc) {
+            assertTrue(idExc.getMessage().contains(Integer.toString(id)), "Message does not contain id:"+Integer.toString(id));
+        }
+        
+    }
 
 }
