@@ -14,6 +14,10 @@ public class AccountingRegistry {
     AccountingRegistry() {
 
 	}
+	/**
+     * Simulates the availibility for the database
+     * @param condition The availability of the database
+     */
 	public void setAvailability(boolean condition){
         this.dataBaseAvailable = condition;
 	}
