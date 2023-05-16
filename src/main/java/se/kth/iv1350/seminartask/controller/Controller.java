@@ -3,6 +3,10 @@ package se.kth.iv1350.seminartask.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.Logger.*;
+
 import se.kth.iv1350.seminartask.integration.*;
 import se.kth.iv1350.seminartask.model.*;
 
@@ -21,6 +25,8 @@ public class Controller {
     private RegisteredItems registeredItems;
     private CashRegister cashRegister;
     private SaleLog currentSaleLog;
+
+    private static Logger logger = Logger.getLogger(Controller.class.getName());
     
 
     /**
@@ -33,6 +39,9 @@ public class Controller {
         this.itemRegistry = creator.getItemRegistry();
         this.accountingRegistry = creator.getAccountingRegistry();
         this.cashRegister = new CashRegister(new Cash(10000,"I$"));
+        try {
+            logger.addHandler(new FileHandler());
+        } catch (Exception e) {}
         
 
     }
