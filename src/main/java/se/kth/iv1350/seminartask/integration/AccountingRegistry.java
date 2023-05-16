@@ -21,8 +21,10 @@ public class AccountingRegistry {
 	 * Saves the <code>SaleLog</code> for the current sale to the accounting database
 	 * 
 	 * @param currentSaleLog The <code>SaleLog</code> that should be saved in the <code>AccountRegistry</code>
+	 * @throws AccountingRegistryException an errror occured in the registry
+	 * 
 	 */
-	public void saveSaleLog(SaleLog currentSaleLog) {
+	public void saveSaleLog(SaleLog currentSaleLog) throws AccountingRegistryException{
 		if (this.dataBaseAvailable == false) 
 			throw new AccountingRegistryException("Registery Not running");
 		this.currentSaleLog = currentSaleLog;
