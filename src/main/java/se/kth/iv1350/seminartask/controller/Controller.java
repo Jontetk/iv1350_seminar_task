@@ -83,6 +83,7 @@ public class Controller {
         ItemDTO item = null;
         try {
             item = itemRegistry.searchItem(id);
+            registeredItems.addItem(item, amount);
         } catch (ItemRegistryException itemRegExc) {
             throw new OperationFailedException("Could not find the item.",itemRegExc);
         }
