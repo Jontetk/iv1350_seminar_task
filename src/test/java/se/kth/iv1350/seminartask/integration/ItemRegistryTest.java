@@ -9,6 +9,9 @@ import se.kth.iv1350.seminartask.util.*;
 public class ItemRegistryTest {
     ItemRegistry itemReg = new ItemRegistry();
 
+    
+    
+
     @Test
     void testSearchItemWithIdOfOne() {
         try {
@@ -59,6 +62,19 @@ public class ItemRegistryTest {
             assertTrue(idExc.getMessage().contains(Integer.toString(id)), "Message does not contain id:"+Integer.toString(id));
         }
         
+    }
+
+    @Test 
+    void testSearchItemwWithunAvailableRegisrty(){
+        itemReg.setAvailability(false);
+        try {
+            itemReg.searchItem(1);
+            fail("Successfully searced with an unavailable regisrty");
+        } catch (Exception e) {}
+        
+
+
+
     }
 
 }
