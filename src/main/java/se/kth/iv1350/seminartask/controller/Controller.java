@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import java.util.logging.FileHandler;
+import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
@@ -42,12 +43,18 @@ public class Controller {
         this.accountingRegistry = creator.getAccountingRegistry();
         this.cashRegister = new CashRegister(new Cash(10000,"I$"));
         try {
-        FileHandler handler = new FileHandler("controller%g.log");
-        SimpleFormatter formatter = new SimpleFormatter();
-        handler.setFormatter(formatter);
-            logger.addHandler(handler);
-        } catch (Exception e) {}
+            
 
+
+        FileHandler fileHandler = new FileHandler("controller.log");
+        logger.addHandler(fileHandler);
+        SimpleFormatter formatter = new SimpleFormatter();
+        fileHandler.setFormatter(formatter);
+        logger.setUseParentHandlers(false);
+        // TAKE THIS AVAY THIS CAUSES ERROR
+        itemRegistry.setAvailability(false);
+        } catch (Exception e) {}
+       
     }
 
     /**
