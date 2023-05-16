@@ -2,6 +2,7 @@ package se.kth.iv1350.seminartask.view;
 import se.kth.iv1350.seminartask.model.*;
 import se.kth.iv1350.seminartask.util.ItemDTO;
 import se.kth.iv1350.seminartask.controller.*;
+import se.kth.iv1350.seminartask.integration.IdNotFoundException;
 import se.kth.iv1350.seminartask.util.*;
 import static java.lang.System.out;
 
@@ -20,6 +21,7 @@ public class View {
      * 
      */
     public View(Controller controller) throws IOException{
+        ErrorMessageHandler errorMsgHandler = new ErrorMessageHandler();
         Scanner scanner = new Scanner(in);
         controller.startSale();
         boolean scanning = true;
@@ -45,14 +47,18 @@ public class View {
 
                 }
             }
+            try{
             selectedItem = controller.selectItem(itemID,amount);
-            if (selectedItem != null){
                 out.println("Last scanned item:");
                 out.println(selectedItem.getDescription()+" x "+amount+"\n");
             }
             
-            else
+            catch (IdNotFoundException idNotFoundException){
                 out.println("The last item was invalid please try again\n");
+            }
+            catch (OperationFailedException operationFailedException) {
+                errorMsgHandler.showErrorMessage("Something went wrong with the item database could not find item.");
+            } 
             out.print("Want to keep scanning? [y/n]:");
             keepScanning = scanner.next();
             if (keepScanning.toLowerCase().equals("n"))
@@ -92,7 +98,12 @@ public class View {
         out.println("\n"+currentSaleLog.getSaleDate().getYear()+"-"+currentSaleLog.getSaleDate().getMonthValue()+"-"+currentSaleLog.getSaleDate().getDayOfMonth());
         out.println(currentSaleLog.getSaleDate().getHour()+":"+currentSaleLog.getSaleDate().getMinute()+":"+currentSaleLog.getSaleDate().getSecond());
 
+        try {
         controller.endSale();
+        }
+        catch (OperationFailedException operationFailedException) {
+            errorMsgHandler.showErrorMessage("Something went wrong with the database when saving");
+        } 
         scanner.close();
     }   
     
