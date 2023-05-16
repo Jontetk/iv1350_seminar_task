@@ -36,7 +36,7 @@ public class ItemRegistry {
      * @param id The item of the wanted item
      * @return The {@link se.kth.iv1350.seminartask.util.ItemDTO ItemDTO} for the wanted item
      * @throws IdNotFoundException given id could not be found in the itemRegistry
-     * @throws ItemRegistryException an error occured in the registery
+     * @throws ItemRegistryException if an error occured in the registery
      * 
      */
     public ItemDTO searchItem (int id) throws ItemRegistryException, IdNotFoundException
@@ -56,7 +56,7 @@ public class ItemRegistry {
     /**
      * Updates the inventory depending on which items were bought in the {@link se.kth.iv1350.seminartask.model.SaleLog SaleLog} 
      * @param currentSaleLog The {@link se.kth.iv1350.seminartask.model.SaleLog SaleLog} containing the purchased items
-     * @throws ItemRegistryException an error ouccured in the registry
+     * @throws ItemRegistryException if an error ouccured in the registry
      */
     public void updateInventory (SaleLog currentSaleLog) throws ItemRegistryException {
         if (this.dataBaseAvailable == false) {
