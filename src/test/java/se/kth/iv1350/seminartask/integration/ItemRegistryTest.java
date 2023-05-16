@@ -70,7 +70,9 @@ public class ItemRegistryTest {
         try {
             itemReg.searchItem(1);
             fail("Successfully searced with an unavailable regisrty");
-        } catch (Exception e) {}
+        } catch (Exception e) {
+            itemReg.setAvailability(true);
+        }
         
 
 
