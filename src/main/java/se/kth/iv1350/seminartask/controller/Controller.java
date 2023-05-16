@@ -43,7 +43,8 @@ public class Controller {
         this.cashRegister = new CashRegister(new Cash(10000,"I$"));
         try {
         FileHandler handler = new FileHandler("controller%g.log");
-        // handler.setFormatter(new SimpleFormatter());
+        SimpleFormatter formatter = new SimpleFormatter();
+        handler.setFormatter(formatter);
             logger.addHandler(handler);
         } catch (Exception e) {}
 
