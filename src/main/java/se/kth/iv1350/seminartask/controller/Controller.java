@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import java.util.logging.FileHandler;
+import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 import java.util.logging.Logger.*;
 
 import se.kth.iv1350.seminartask.integration.*;
@@ -41,10 +43,18 @@ public class Controller {
         this.accountingRegistry = creator.getAccountingRegistry();
         this.cashRegister = new CashRegister(new Cash(10000,"I$"));
         try {
-            logger.addHandler(new FileHandler("java%g.log"));
-        } catch (Exception e) {}
-        logger.log(Level.SEVERE, "Test");
+            
 
+
+        FileHandler fileHandler = new FileHandler("controller.log");
+        logger.addHandler(fileHandler);
+        SimpleFormatter formatter = new SimpleFormatter();
+        fileHandler.setFormatter(formatter);
+        logger.setUseParentHandlers(false);
+        // TAKE THIS AVAY THIS CAUSES ERROR
+        itemRegistry.setAvailability(false);
+        } catch (Exception e) {}
+       
     }
 
     /**
@@ -86,6 +96,7 @@ public class Controller {
             item = itemRegistry.searchItem(id);
             registeredItems.addItem(item, amount);
         } catch (ItemRegistryException itemRegExc) {
+            logger.log(Level.SEVERE, "Operation Failed",itemRegExc );
             throw new OperationFailedException("Could not find the item.",itemRegExc);
         }
        
@@ -163,12 +174,14 @@ public class Controller {
         accountingRegistry.saveSaleLog(currentSaleLog);
         } 
         catch (AccountingRegistryException accountRegException) {
+            logger.log(Level.SEVERE,"Problem occured in accounting Database", accountRegException);
             throw new OperationFailedException("Could not save to the accounting database",accountRegException);
         }
         try{
         itemRegistry.updateInventory(currentSaleLog);
         } 
         catch (ItemRegistryException itemRegException) {
+            logger.log(Level.SEVERE,"Problem occured in inventory Database", itemRegException);
             throw new OperationFailedException("Could not save to the inventory database",itemRegException);
         }
     }
