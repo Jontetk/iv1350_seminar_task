@@ -5,6 +5,12 @@ import se.kth.iv1350.seminartask.controller.*;
 import se.kth.iv1350.seminartask.integration.IdNotFoundException;
 import se.kth.iv1350.seminartask.util.*;
 import static java.lang.System.out;
+import java.util.logging.FileHandler;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.Logger.*;
 
 import java.io.IOException;
 
@@ -15,12 +21,20 @@ import java.util.Scanner;
  * The view which communicates with the user
  */
 public class View {
+    private static Logger logger = Logger.getLogger(View.class.getName());
     /**
      * The view which communicates with the controller and the user
      * @param controller the {@link se.kth.iv1350.seminartask.controller Controller} that the view should use 
      * 
      */
     public View(Controller controller) throws IOException{
+        try {
+            FileHandler fileHandler = new FileHandler("view.log");
+            logger.addHandler(fileHandler);
+            SimpleFormatter formatter = new SimpleFormatter();
+            fileHandler.setFormatter(formatter);
+            logger.setUseParentHandlers(false);
+            } catch (Exception e) {}
         ErrorMessageHandler errorMsgHandler = new ErrorMessageHandler();
         Scanner scanner = new Scanner(in);
         controller.startSale();
@@ -53,6 +67,7 @@ public class View {
                 out.println(selectedItem.getDescription()+" x "+amount+"\n");
             } catch (IdNotFoundException idNotFoundException){
                 out.println("The last item was invalid please try again\n");
+                logger.log(Level.INFO, "Operation Failed",idNotFoundException );
             } catch (OperationFailedException operationFailedException) {
                 errorMsgHandler.showErrorMessage("Something went wrong with the item database, could not find item.");
             } 

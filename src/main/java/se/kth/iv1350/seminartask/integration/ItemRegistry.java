@@ -54,7 +54,7 @@ public class ItemRegistry {
                 return item;
             
         }
-        throw new IdNotFoundException("The ID "+id+"was not found");
+        throw new IdNotFoundException("The ID "+id+" was not found");
 
     }
     /**
