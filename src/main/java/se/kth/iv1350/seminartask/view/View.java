@@ -51,13 +51,10 @@ public class View {
             selectedItem = controller.selectItem(itemID,amount);
                 out.println("Last scanned item:");
                 out.println(selectedItem.getDescription()+" x "+amount+"\n");
-            }
-            
-            catch (IdNotFoundException idNotFoundException){
+            } catch (IdNotFoundException idNotFoundException){
                 out.println("The last item was invalid please try again\n");
-            }
-            catch (OperationFailedException operationFailedException) {
-                errorMsgHandler.showErrorMessage("Something went wrong with the item database could not find item.");
+            } catch (OperationFailedException operationFailedException) {
+                errorMsgHandler.showErrorMessage("Something went wrong with the item database, could not find item.");
             } 
             out.print("Want to keep scanning? [y/n]:");
             keepScanning = scanner.next();
@@ -100,8 +97,7 @@ public class View {
 
         try {
         controller.endSale();
-        }
-        catch (OperationFailedException operationFailedException) {
+        } catch (OperationFailedException operationFailedException) {
             errorMsgHandler.showErrorMessage("Something went wrong with the database when saving");
         } 
         scanner.close();
