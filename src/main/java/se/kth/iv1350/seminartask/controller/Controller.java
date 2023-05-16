@@ -2,7 +2,7 @@ package se.kth.iv1350.seminartask.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.logging.ConsoleHandler;
+
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.Logger.*;
@@ -40,7 +40,7 @@ public class Controller {
         this.accountingRegistry = creator.getAccountingRegistry();
         this.cashRegister = new CashRegister(new Cash(10000,"I$"));
         try {
-            logger.addHandler(new FileHandler("Log.txt"));
+            logger.addHandler(new FileHandler());
         } catch (Exception e) {}
         
 
