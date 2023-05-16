@@ -2,8 +2,7 @@ package se.kth.iv1350.seminartask.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
-
-
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -73,6 +72,11 @@ public class ControllerTest {
     }
 
     
+
+
+
+
+    // TODO CHANGE THIS TEST
     @ParameterizedTest
     @ValueSource(ints = {1,2,3,4,5,6})
 
@@ -80,11 +84,13 @@ public class ControllerTest {
         double paidAmount = Double.MIN_VALUE;
         try {
             controller.selectItem(id, 4);
-        } catch (Exception e) {}
+            controller.calculateChange(new Cash(paidAmount, "I$"));
+            fail("Successfully made the payment");
+        } catch (Exception e) {
+            
+        }
         
-        controller.getTotal();
-        Cash actualChangeAmount = controller.calculateChange(new Cash(paidAmount, "I$"));
-        assertNull(actualChangeAmount,"Wrong change amount");
+       
     }
 
 }
