@@ -53,7 +53,9 @@ public class Controller {
         logger.setUseParentHandlers(false);
         // TAKE THIS AVAY THIS CAUSES ERROR
         itemRegistry.setAvailability(false);
-        } catch (Exception e) {}
+        } catch (IOException ioExc) {
+            ioExc.printStackTrace();          
+        }
        
     }
 
