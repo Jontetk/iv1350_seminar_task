@@ -12,6 +12,7 @@ import java.io.FileWriter;
 public class TotalRevenueFileOutput implements SaleObserver {
     PrintWriter revenueStream = null;
     private double totalIncome;
+    private int saleNum = 0;
     public TotalRevenueFileOutput() throws IOException{
         totalIncome = 0;
         revenueStream = new PrintWriter(
@@ -21,7 +22,7 @@ public class TotalRevenueFileOutput implements SaleObserver {
     public void newSale(SaleLog saleLog) {
         totalIncome += saleLog.getTotalPrice().getAmount()+saleLog.getTotalVAT().getAmount();
         
-        revenueStream.println(totalIncome);
+        revenueStream.println("Total after sale"+(++saleNum)+": "+totalIncome);
 
     }
     

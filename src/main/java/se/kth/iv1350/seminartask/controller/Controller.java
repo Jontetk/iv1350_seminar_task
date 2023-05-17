@@ -54,7 +54,7 @@ public class Controller {
      * @param creator registry creator, used to fetch registry objects for use
      * @param printer for printing receipts
      */
-    public Controller(RegistryCreator creator, Printer printer){
+    public Controller(RegistryCreator creator, Printer printer) throws IOException{
         this.printer = printer;
         this.itemRegistry = creator.getItemRegistry();
         this.accountingRegistry = creator.getAccountingRegistry();
@@ -70,6 +70,7 @@ public class Controller {
         }
 
         this.addSaleObserver(new TotalRevenueView());
+        this.addSaleObserver(new TotalRevenueFileOutput());
        
     }
 
