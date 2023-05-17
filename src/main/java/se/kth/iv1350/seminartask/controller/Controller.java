@@ -15,6 +15,7 @@ import se.kth.iv1350.seminartask.model.*;
 
 import se.kth.iv1350.seminartask.util.Cash;
 import se.kth.iv1350.seminartask.util.ItemDTO;
+import se.kth.iv1350.seminartask.view.TotalRevenueView;
 
 
 /**
@@ -59,9 +60,6 @@ public class Controller {
         this.accountingRegistry = creator.getAccountingRegistry();
         this.cashRegister = new CashRegister(new Cash(10000,"I$"));
         try {
-            
-
-
         FileHandler fileHandler = new FileHandler("controller.log");
         logger.addHandler(fileHandler);
         SimpleFormatter formatter = new SimpleFormatter();
@@ -70,6 +68,8 @@ public class Controller {
         } catch (IOException ioExc) {
             ioExc.printStackTrace();          
         }
+
+        this.addSaleObserver(new TotalRevenueView());
        
     }
 
