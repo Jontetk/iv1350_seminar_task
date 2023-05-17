@@ -18,21 +18,8 @@ public class Main {
         Printer printer = new Printer();
         Controller controller = new Controller(registryCreator, printer);
         Scanner scanner = new Scanner(in);
-        View view = new View(controller,scanner);
-        boolean running = true;
-        
-        String keepScanning;
-        while (running){
-            keepScanning = "";
-            view.sale();
-            while (keepScanning.toLowerCase().equals("n") != true && keepScanning.toLowerCase().equals("y") != true){
-                System.out.print("Want to scan again? [y/n]:");
-                keepScanning = scanner.next();
-                if (keepScanning.toLowerCase().equals("n"))
-                    running = false;
-                
-            }
-        }
+        new View(controller,scanner);
+
 
        
 

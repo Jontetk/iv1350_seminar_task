@@ -33,7 +33,7 @@ public class View {
      * 
      */
 
-    public View(Controller controller,Scanner scanner){
+    public View(Controller controller,Scanner scanner) throws IOException{
         this.errorMsgHandler = new ErrorMessageHandler();
         this.controller = controller;
         this.scanner = scanner;
@@ -44,7 +44,20 @@ public class View {
             fileHandler.setFormatter(formatter);
             logger.setUseParentHandlers(false);
             } catch (Exception e) {}
+            boolean running = true;
         
+            String keepRunning;
+            while (running){
+                keepRunning = "";
+                sale();
+                while (keepRunning.toLowerCase().equals("n") != true && keepRunning.toLowerCase().equals("y") != true){
+                    System.out.print("Want to scan again? [y/n]:");
+                    keepRunning = scanner.next();
+                    if (keepRunning.toLowerCase().equals("n"))
+                        running = false;
+                    
+                }
+            }
         
     }
     public void sale() throws IOException{
