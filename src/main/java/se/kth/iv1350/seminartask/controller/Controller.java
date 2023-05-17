@@ -30,6 +30,22 @@ public class Controller {
     private SaleLog currentSaleLog;
 
     private static Logger logger = Logger.getLogger(Controller.class.getName());
+
+    
+    private ArrayList<SaleObserver> saleObservers = new ArrayList<SaleObserver>();
+
+
+    private void notifyAllObservers() {
+        for (SaleObserver observer : saleObservers){
+            observer.newSale(currentSaleLog);
+        }
+    }
+
+    public void addSaleObserver(SaleObserver obs) {
+        saleObservers.add(obs);
+        
+    }
+
     
 
     /**
@@ -172,6 +188,8 @@ public class Controller {
      * @throws OperationFailedException if unable to save to the database
      */
     public void endSale() throws OperationFailedException{
+        notifyAllObservers();
+
         try{
         accountingRegistry.saveSaleLog(currentSaleLog);
         } 
