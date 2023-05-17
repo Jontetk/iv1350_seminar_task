@@ -67,8 +67,6 @@ public class Controller {
         SimpleFormatter formatter = new SimpleFormatter();
         fileHandler.setFormatter(formatter);
         logger.setUseParentHandlers(false);
-        // TAKE THIS AVAY THIS CAUSES ERROR
-        itemRegistry.setAvailability(false);
         } catch (IOException ioExc) {
             ioExc.printStackTrace();          
         }

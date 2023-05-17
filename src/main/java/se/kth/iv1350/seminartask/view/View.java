@@ -15,6 +15,8 @@ import java.util.logging.Logger.*;
 import java.io.IOException;
 
 import static java.lang.System.in;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 /**
  * 
@@ -22,12 +24,19 @@ import java.util.Scanner;
  */
 public class View {
     private static Logger logger = Logger.getLogger(View.class.getName());
+    private Scanner scanner;
+    private Controller controller;
+    ErrorMessageHandler errorMsgHandler;
     /**
      * The view which communicates with the controller and the user
      * @param controller the {@link se.kth.iv1350.seminartask.controller Controller} that the view should use 
      * 
      */
-    public View(Controller controller) throws IOException{
+
+    public View(Controller controller,Scanner scanner){
+        this.errorMsgHandler = new ErrorMessageHandler();
+        this.controller = controller;
+        this.scanner = scanner;
         try {
             FileHandler fileHandler = new FileHandler("view.log");
             logger.addHandler(fileHandler);
@@ -35,15 +44,19 @@ public class View {
             fileHandler.setFormatter(formatter);
             logger.setUseParentHandlers(false);
             } catch (Exception e) {}
-        ErrorMessageHandler errorMsgHandler = new ErrorMessageHandler();
-        Scanner scanner = new Scanner(in);
+        
+        
+    }
+    public void sale() throws IOException{
         controller.startSale();
         boolean scanning = true;
-        int itemID;
-        int amount;
+        int itemID = 0;
+        int amount = 0;
         ItemDTO selectedItem;
-        String keepScanning;
+        String keepScanning = "";
         while (scanning) {
+
+            try{
             out.print("\nItem id:");
             itemID = scanner.nextInt();
             out.print("\nAmount:");
@@ -51,6 +64,13 @@ public class View {
             while (amount <= 0) {
                 out.print("\nAmount:");
                 amount = scanner.nextInt();
+            }
+            } catch (InputMismatchException inputMissException) {
+                errorMsgHandler.showErrorMessage("Wrong input please enter the id and amount again");
+                logger.log(Level.INFO,"Invalid input",inputMissException);
+                itemID = -1;
+                amount = 0;
+                scanner.next();
             }
             out.println("\nThe current items are:\n");
             if (controller.getAllRegistered().size() != 0){
@@ -67,15 +87,17 @@ public class View {
                 out.println(selectedItem.getDescription()+" x "+amount+"\n");
             } catch (IdNotFoundException idNotFoundException){
                 out.println("The last item was invalid please try again\n");
-                logger.log(Level.INFO, "Operation Failed",idNotFoundException );
+                logger.log(Level.INFO, "Invalid id",idNotFoundException );
             } catch (OperationFailedException operationFailedException) {
                 errorMsgHandler.showErrorMessage("Something went wrong with the item database, could not find item.");
             } 
-            out.print("Want to keep scanning? [y/n]:");
-            keepScanning = scanner.next();
-            if (keepScanning.toLowerCase().equals("n"))
-                scanning = false;
-            
+            keepScanning = "";
+            while (keepScanning.toLowerCase().equals("n") != true && keepScanning.toLowerCase().equals("y") != true){
+                out.print("Want to keep scanning? [y/n]:");
+                keepScanning = scanner.next();
+                if (keepScanning.toLowerCase().equals("n"))
+                    scanning = false;
+            }
         }
         Cash totalPrice = controller.getTotal();
         out.println("\nTotal price to pay:"+totalPrice.getAmount() +totalPrice.getCurrency());
@@ -115,7 +137,7 @@ public class View {
         } catch (OperationFailedException operationFailedException) {
             errorMsgHandler.showErrorMessage("Something went wrong with the database when saving");
         } 
-        scanner.close();
+
     }   
-    
 }
+
