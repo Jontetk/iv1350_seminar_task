@@ -15,6 +15,7 @@ import se.kth.iv1350.seminartask.model.*;
 
 import se.kth.iv1350.seminartask.util.Cash;
 import se.kth.iv1350.seminartask.util.ItemDTO;
+import se.kth.iv1350.seminartask.view.TotalRevenueView;
 
 
 /**
@@ -30,6 +31,22 @@ public class Controller {
     private SaleLog currentSaleLog;
 
     private static Logger logger = Logger.getLogger(Controller.class.getName());
+
+    
+    private ArrayList<SaleObserver> saleObservers = new ArrayList<SaleObserver>();
+
+
+    private void notifyAllObservers() {
+        for (SaleObserver observer : saleObservers){
+            observer.newSale(currentSaleLog);
+        }
+    }
+
+    public void addSaleObserver(SaleObserver obs) {
+        saleObservers.add(obs);
+        
+    }
+
     
 
     /**
@@ -43,9 +60,6 @@ public class Controller {
         this.accountingRegistry = creator.getAccountingRegistry();
         this.cashRegister = new CashRegister(new Cash(10000,"I$"));
         try {
-            
-
-
         FileHandler fileHandler = new FileHandler("controller.log");
         logger.addHandler(fileHandler);
         SimpleFormatter formatter = new SimpleFormatter();
@@ -54,6 +68,8 @@ public class Controller {
         } catch (IOException ioExc) {
             ioExc.printStackTrace();          
         }
+
+        this.addSaleObserver(new TotalRevenueView());
        
     }
 
@@ -170,6 +186,8 @@ public class Controller {
      * @throws OperationFailedException if unable to save to the database
      */
     public void endSale() throws OperationFailedException{
+        notifyAllObservers();
+
         try{
         accountingRegistry.saveSaleLog(currentSaleLog);
         } 
