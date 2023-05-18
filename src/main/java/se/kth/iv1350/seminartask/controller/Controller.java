@@ -13,8 +13,7 @@ import java.util.logging.Logger.*;
 import se.kth.iv1350.seminartask.integration.*;
 import se.kth.iv1350.seminartask.model.*;
 
-import se.kth.iv1350.seminartask.util.Cash;
-import se.kth.iv1350.seminartask.util.ItemDTO;
+import se.kth.iv1350.seminartask.util.*;
 import se.kth.iv1350.seminartask.view.TotalRevenueView;
 
 
@@ -29,6 +28,7 @@ public class Controller {
     private RegisteredItems registeredItems;
     private CashRegister cashRegister;
     private SaleLog currentSaleLog;
+    private DiscountRegistry discountRegistry;
 
     private static Logger logger = Logger.getLogger(Controller.class.getName());
 
@@ -58,6 +58,8 @@ public class Controller {
         this.printer = printer;
         this.itemRegistry = creator.getItemRegistry();
         this.accountingRegistry = creator.getAccountingRegistry();
+        this.discountRegistry = creator.getDiscountRegistry();
+
         this.cashRegister = new CashRegister(new Cash(10000,"I$"));
         try {
         FileHandler fileHandler = new FileHandler("controller.log");
@@ -179,6 +181,14 @@ public class Controller {
         return currentSaleLog; 
     }
 
+
+    public void applyDiscount(int customerID){
+        
+        ArrayList<DiscountParameterDTO> discountList = discountRegistry.getEligibleDiscounts(customerID);
+        for(DiscountParameterDTO discount: discountList){
+            discount.getStrategy().discount(discount, currentSaleLog);
+        }
+    }
 
     /**
      * 

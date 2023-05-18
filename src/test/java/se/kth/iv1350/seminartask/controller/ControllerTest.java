@@ -24,7 +24,10 @@ public class ControllerTest {
 
     @BeforeEach
     void setUp() {
-        controller = new Controller(registryCreator, null);
+        try {
+            controller = new Controller(registryCreator, null); 
+        } catch (Exception e) {}
+       
         controller.startSale();
     }
        
