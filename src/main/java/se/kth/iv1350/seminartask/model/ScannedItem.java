@@ -8,6 +8,8 @@ import se.kth.iv1350.seminartask.util.*;
 public class ScannedItem {
     private ItemDTO item;
 	private int amount;
+    private Double discount;
+
 
     /**
      * Creates the object for the amount and what type a specific item in the sale is
@@ -32,6 +34,20 @@ public class ScannedItem {
 	public ItemDTO getItem() {
 		return this.item;
 	}
+    /**
+     * 
+     * @return The total discount for the item
+     */
+    public Double getDiscount() {
+        return discount;
+    }
+    /**
+     * 
+     * @param discount The total discount for the item
+     */
+    public void setDiscount(Double discount) {
+        this.discount = discount;
+    }
     /**
      * 
      * @return The amount of the item
