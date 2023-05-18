@@ -46,6 +46,21 @@ public class SaleLog {
     public Cash getTotalVAT() {
         return this.registeredItems.getTotalVAT();
     }
+    /**
+     * Gets the total discount
+     * @return the total discount
+     */
+    public Cash getTotalDiscount() {
+        return this.registeredItems.getTotalDiscount();
+    }
+    /**
+     * Adds to the total discount
+     * @param discount The discount to be added
+     */
+    public void addTotalDiscount(Cash discount) {
+        this.registeredItems.addTotalDiscount(discount);
+    }
+
 
     /**
      * @return a <code>Cash</code> instance representing the
