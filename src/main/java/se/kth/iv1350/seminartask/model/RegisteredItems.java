@@ -9,17 +9,36 @@ import java.util.ArrayList;
  * 
  */
 public class RegisteredItems {
-    ArrayList<ScannedItem> items;
-    Cash totalPrice;
-    Cash totalVAT;
+    private ArrayList<ScannedItem> items;
+    private Cash totalPrice;
+    private Cash totalVAT;
+    private Cash totalDiscount;
+
     /**
      * Creates the RegistredItems object for saving registred items
      * 
      */
     public RegisteredItems(){
-        items = new ArrayList<ScannedItem>();
-        totalPrice = new Cash(0.0, "I$");
-        totalVAT = new Cash(0.0, "I$");
+        this.items = new ArrayList<ScannedItem>();
+        this.totalPrice = new Cash(0.0, "I$");
+        this.totalVAT = new Cash(0.0, "I$");
+        this.totalDiscount = new Cash(0.0, "I$");
+    }
+
+
+    /**
+     * Gets the total discount for
+     * @return The total discount
+     */
+    public Cash getTotalDiscount() {
+        return totalDiscount;
+    }
+    /**
+     * Adds to the total discount
+     * @param discount The added disocunt
+     */
+    public void addTotalDiscount(Cash discount) {
+        this.totalDiscount.saveAmount(discount.getAmount() + this.totalDiscount.getAmount());
     }
 
     /**

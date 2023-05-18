@@ -65,8 +65,8 @@ class RegisteredItemsTest {
         regItems.addItem(newItem, 1);
         double excpectedcashamount = 470;
         double excpectedvatamount = 159;
-        assertEquals(excpectedcashamount, regItems.totalPrice.getAmount(), "Total price does not match excpected");
-        assertEquals(excpectedvatamount, regItems.totalVAT.getAmount(), "Total vat does not match excpected");
+        assertEquals(excpectedcashamount, regItems.getTotalPrice().getAmount(), "Total price does not match excpected");
+        assertEquals(excpectedvatamount, regItems.getTotalVAT().getAmount(), "Total vat does not match excpected");
     }
     @Test
     void testAddItemAlreadyExistCorrectArraySize() {
