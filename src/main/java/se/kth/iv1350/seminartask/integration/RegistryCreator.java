@@ -7,6 +7,7 @@ package se.kth.iv1350.seminartask.integration;
 public class RegistryCreator {
     ItemRegistry itemRegistry;
     AccountingRegistry accountingRegistry;
+    DiscountRegistry discountRegistry;
 
    /**
     * Creates an object instance responsible for registries
@@ -15,6 +16,7 @@ public class RegistryCreator {
     public RegistryCreator() {
         this.itemRegistry = new ItemRegistry();
         this.accountingRegistry = new AccountingRegistry();
+        this.discountRegistry = new DiscountRegistry();
     }
 
 
@@ -33,5 +35,9 @@ public ItemRegistry getItemRegistry() {
 public AccountingRegistry getAccountingRegistry() {
     return accountingRegistry;
 }
+public DiscountRegistry getDiscountRegistry(){
+    return discountRegistry;
+}
+
         
 }

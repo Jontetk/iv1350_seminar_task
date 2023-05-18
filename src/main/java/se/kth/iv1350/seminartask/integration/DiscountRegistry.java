@@ -8,6 +8,11 @@ public class DiscountRegistry {
     // discountObject hasmap. 
     private HashMap<Integer,ArrayList<DiscountParameterDTO>> discounts = new HashMap<Integer,ArrayList<DiscountParameterDTO>>();
 
+    public DiscountRegistry(){
+        
+
+    }
+
     public ArrayList<DiscountParameterDTO> getEligibleDiscounts(int customerID) {
         return discounts.get(customerID);
     }
