@@ -8,7 +8,7 @@ import se.kth.iv1350.seminartask.util.*;
 public class ScannedItem {
     private ItemDTO item;
 	private int amount;
-    private Double discount;
+    private Cash discount;
 
 
     /**
@@ -38,14 +38,14 @@ public class ScannedItem {
      * 
      * @return The total discount for the item
      */
-    public Double getDiscount() {
+    public Cash getDiscount() {
         return discount;
     }
     /**
      * 
      * @param discount The total discount for the item
      */
-    public void setDiscount(Double discount) {
+    public void setDiscount(Cash discount) {
         this.discount = discount;
     }
     /**
