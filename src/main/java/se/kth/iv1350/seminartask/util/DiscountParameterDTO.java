@@ -8,7 +8,7 @@ public final class DiscountParameterDTO {
     // This class is going to give the necessary 
     // discount reletad arguments for the strategy 
     private Discounter strategy;
-
+    private String name;
     private double minNeededTotal; // Can perhaps be cash??
     private ScannedItem itemAndAmountNeeded;
 
@@ -17,7 +17,9 @@ public final class DiscountParameterDTO {
 
     
 
-    public DiscountParameterDTO(Discounter strategy, double minNeededTotal, ScannedItem itemAndAmountNeeded, Cash discountAmount) {
+    public DiscountParameterDTO(Discounter strategy, String name, double minNeededTotal, ScannedItem itemAndAmountNeeded, Cash discountAmount) {
+        this.strategy = strategy;
+        this.name = name;
         this.minNeededTotal = minNeededTotal;
         this.itemAndAmountNeeded = itemAndAmountNeeded;
         this.discountAmount = discountAmount;
@@ -25,6 +27,9 @@ public final class DiscountParameterDTO {
 
     public Discounter getStrategy() {
         return strategy;
+    }
+    public String getName() {
+        return name;
     }
     
     public double getMinNeededTotal() {
