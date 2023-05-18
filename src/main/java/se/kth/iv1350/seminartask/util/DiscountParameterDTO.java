@@ -7,9 +7,20 @@ public final class DiscountParameterDTO {
     /**
      * 
      */
-    private String type;
-    private ItemDTO discountedItem;
-    private int amountItemsNeededforDiscount;
+    private double minNeededTotal; // Can perhaps be cash??
+
+
+
+    private Cash discountAmount; // Fixed amount not procent
+
+    public double getMinNeededTotal() {
+        return minNeededTotal;
+    }
+
+    public Cash getDiscountAmount() {
+        return discountAmount;
+    }
+
 
 }
 
