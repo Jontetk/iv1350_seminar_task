@@ -1,5 +1,7 @@
 package se.kth.iv1350.seminartask.util;
 
+import se.kth.iv1350.seminartask.model.ScannedItem;
+
 public final class DiscountParameterDTO {
     // TODO Put fields for the discount strategy
     // This class is going to give the necessary 
@@ -8,7 +10,7 @@ public final class DiscountParameterDTO {
      * 
      */
     private double minNeededTotal; // Can perhaps be cash??
-
+    private ScannedItem itemAndAmountNeeded;
 
 
     private Cash discountAmount; // Fixed amount not procent
@@ -19,6 +21,10 @@ public final class DiscountParameterDTO {
 
     public Cash getDiscountAmount() {
         return discountAmount;
+    }
+
+    public ScannedItem getItemAndAmountNeeded() {
+        return itemAndAmountNeeded;
     }
 
 
