@@ -42,6 +42,7 @@ public class Printer {
         }
         double totalPriceWithVat = currentSaleLog.getTotalPrice().getAmount() + currentSaleLog.getTotalVAT().getAmount();
         double totalVat = currentSaleLog.getTotalVAT().getAmount();
+        recieptPrintStream.println("Applied discounts: " + currentSaleLog.getAppliedDiscounts());
         recieptPrintStream.println("Total with VAT: " + totalPriceWithVat);
         recieptPrintStream.println("Total VAT: "+ totalVat);
         recieptPrintStream.println("Change: "+currentSaleLog.getChange().getAmount());

@@ -11,7 +11,7 @@ public class TotalRevenueView implements SaleObserver{
 
 
     public void newSale(SaleLog log){
-        totalIncome += log.getTotalPrice().getAmount() + log.getTotalVAT().getAmount();
+        totalIncome += log.getTotalPrice().getAmount() + log.getTotalVAT().getAmount()-log.getTotalDiscount().getAmount();
     System.out.format("TotalRevenue: %.3f \n" ,totalIncome);
     }
     

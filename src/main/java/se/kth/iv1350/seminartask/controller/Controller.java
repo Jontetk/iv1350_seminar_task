@@ -65,8 +65,8 @@ public class Controller {
         this.itemRegistry = creator.getItemRegistry();
         this.accountingRegistry = creator.getAccountingRegistry();
         this.discountRegistry = creator.getDiscountRegistry();
-
         this.cashRegister = new CashRegister(new Cash(10000,"I$"));
+
         try {
         FileHandler fileHandler = new FileHandler("controller.log");
         logger.addHandler(fileHandler);
@@ -163,15 +163,18 @@ public class Controller {
 
     /**
      * gets the current total
+     * @param customerID the id of the customer
      * @return the current total as a {@link se.kth.iv1350.seminartask.util.Cash Cash} object
      */
-    public Cash getTotal(){
+    public Cash getTotal(int customerID){
         currentSaleLog = new SaleLog();
         currentSaleLog.saveRegistredItems(registeredItems);
+        applyDiscount(customerID);
         double totalPrice = registeredItems.getTotalPrice().getAmount();
         double totalVat = registeredItems.getTotalVAT().getAmount();
+        double totalDiscount = registeredItems.getTotalDiscount().getAmount();
         String currencyType = currentSaleLog.getTotalPrice().getCurrency();
-        Cash totalPriceWithVAT = new Cash(totalPrice+totalVat, currencyType);
+        Cash totalPriceWithVAT = new Cash(totalPrice-totalDiscount+totalVat, currencyType);
         return totalPriceWithVAT;
     }
 
@@ -195,8 +198,10 @@ public class Controller {
     public void applyDiscount(int customerID){
         
         ArrayList<DiscountParameterDTO> discountList = discountRegistry.getEligibleDiscounts(customerID);
-        for(DiscountParameterDTO discount: discountList){
-            discount.getStrategy().discount(discount, currentSaleLog);
+        if (discountList != null){
+            for(DiscountParameterDTO discount: discountList){
+                discount.getStrategy().discount(discount, currentSaleLog);
+                }
         }
     }
 

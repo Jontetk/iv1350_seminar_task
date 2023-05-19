@@ -27,6 +27,7 @@ public class MultipleOfSameItemDiscount implements Discounter{
         Cash discountInCash = new Cash(discountAmount, "I$");
         saleItem.setDiscount(discountInCash);
         saleLog.addTotalDiscount(discountInCash);
+        saleLog.addAppliedDiscount(parameterDTO.getName());
 
         }
        
