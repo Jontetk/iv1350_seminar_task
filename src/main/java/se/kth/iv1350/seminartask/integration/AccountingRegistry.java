@@ -1,17 +1,27 @@
 package se.kth.iv1350.seminartask.integration;
 import se.kth.iv1350.seminartask.model.*;
-public class AccountingRegistry {
-	SaleLog currentSaleLog;
-	private boolean dataBaseAvailable = true;
-
-   
 
 	/**
 	 * Saves the sale log for each sale to an external database
 	 * 
 	 * 
 	 */
-    AccountingRegistry() {
+public class AccountingRegistry {
+	SaleLog currentSaleLog;
+	private boolean dataBaseAvailable = true;
+
+	private static final AccountingRegistry ACCOUNTING_REGISTRY = new AccountingRegistry(); 
+	
+
+	/**
+	 * 
+	 * @return the only instance of this singleton.
+	 */
+    public static AccountingRegistry getAccountingRegistry() {
+		return ACCOUNTING_REGISTRY;
+	}
+	
+	private AccountingRegistry(){
 
 	}
 	/**
