@@ -13,15 +13,19 @@ import se.kth.iv1350.seminartask.model.*;
      */
 
 public class DiscountRegistry {
-    
+    private static final DiscountRegistry DISCOUNT_REGISTRY = new DiscountRegistry();
     
     private HashMap<Integer,ArrayList<DiscountParameterDTO>> discounts = new HashMap<Integer,ArrayList<DiscountParameterDTO>>();
     
+    public static DiscountRegistry getDiscountRegistry() {
+        return DISCOUNT_REGISTRY;
+    }
+
     /**
      * Create the DiscountRegistry
      * 
      */
-    public DiscountRegistry(){
+    private DiscountRegistry(){
         
         // Local elements added to hashmap simulate an external database
         ArrayList<DiscountParameterDTO> custom_discounts = new ArrayList<DiscountParameterDTO>();

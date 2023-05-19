@@ -16,7 +16,7 @@ public class RegistryCreator {
     public RegistryCreator() {
         this.itemRegistry = new ItemRegistry();
         this.accountingRegistry = AccountingRegistry.getAccountingRegistry();
-        this.discountRegistry = new DiscountRegistry();
+        this.discountRegistry = DiscountRegistry.getDiscountRegistry();
     }
 
 
