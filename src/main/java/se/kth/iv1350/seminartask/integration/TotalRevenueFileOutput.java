@@ -8,7 +8,10 @@ import java.io.PrintWriter;
 import java.io.FileWriter;
 
 
-
+/**
+ * 
+ * Observer that prints to file
+ */
 public class TotalRevenueFileOutput implements SaleObserver {
     PrintWriter revenueStream = null;
     private double totalIncome;
@@ -24,7 +27,7 @@ public class TotalRevenueFileOutput implements SaleObserver {
 
     }
     /**
-     * observer that prints revenue to file
+     * method for the observer to print revenue to file since program was started
      */
     public void newSale(SaleLog saleLog) {
         totalIncome += saleLog.getTotalPrice().getAmount()+saleLog.getTotalVAT().getAmount()-saleLog.getTotalDiscount().getAmount();
