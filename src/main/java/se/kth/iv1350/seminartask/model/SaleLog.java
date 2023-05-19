@@ -13,13 +13,13 @@ public class SaleLog {
     private LocalDateTime saleDate;
     private RegisteredItems registeredItems;
     private Cash change;
-    private StringBuilder appliedDiscounts;
+    private StringBuilder appliedDiscounts ;
 
     /**
      * Constructor method for an object representing the log for this entire sale.
      */
     public SaleLog(){
-        
+        appliedDiscounts = new StringBuilder();
     }
 
     /**
