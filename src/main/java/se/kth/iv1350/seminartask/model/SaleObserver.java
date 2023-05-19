@@ -9,7 +9,6 @@ package se.kth.iv1350.seminartask.model;
  * 
  */
 
- // TODO ADD addSaleObserver method to controller to so view can add observers
 public interface SaleObserver {
     /**
      * Invoked when a new sale has been processed. 
