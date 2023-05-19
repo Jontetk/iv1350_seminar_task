@@ -12,17 +12,23 @@ public final class DiscountParameterDTO {
     private double minNeededTotal; // Can perhaps be cash??
     private ScannedItem itemAndAmountNeeded;
 
-   
-    private Cash discountAmount; // Fixed amount not procent
+    private Cash fixedDiscountAmount; 
 
     
-
+    /***
+     * 
+     * @param strategy
+     * @param name
+     * @param minNeededTotal
+     * @param itemAndAmountNeeded
+     * @param discountAmount
+     */
     public DiscountParameterDTO(Discounter strategy, String name, double minNeededTotal, ScannedItem itemAndAmountNeeded, Cash discountAmount) {
         this.strategy = strategy;
         this.name = name;
         this.minNeededTotal = minNeededTotal;
         this.itemAndAmountNeeded = itemAndAmountNeeded;
-        this.discountAmount = discountAmount;
+        this.fixedDiscountAmount = discountAmount;
     }
 
     public Discounter getStrategy() {
@@ -36,8 +42,8 @@ public final class DiscountParameterDTO {
         return minNeededTotal;
     }
 
-    public Cash getDiscountAmount() {
-        return discountAmount;
+    public Cash getfixedDiscountAmount() {
+        return fixedDiscountAmount;
     }
 
     public ScannedItem getItemAndAmountNeeded() {
