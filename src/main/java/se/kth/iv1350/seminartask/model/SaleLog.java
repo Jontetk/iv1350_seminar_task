@@ -56,10 +56,11 @@ public class SaleLog {
         discountApplied = true;
     }
     public String getAppliedDiscounts() {
-        int lastCommaIndex =  appliedDiscounts.lastIndexOf(",");
-        if (discountApplied)
-            appliedDiscounts.deleteCharAt(lastCommaIndex);
 
+        if (discountApplied)
+        appliedDiscounts.deleteCharAt(appliedDiscounts.length()-1);
+        
+            
         return appliedDiscounts.toString();
 
 

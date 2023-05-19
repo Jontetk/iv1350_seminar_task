@@ -139,11 +139,13 @@ public class View {
             out.println("Unit price: "+ item.getItem().getPrice().getAmount()+itemCurrency+" VAT Price: "+itemVat+itemCurrency);
             out.println("");
         }
-        double totalPriceWithVat = currentSaleLog.getTotalPrice().getAmount() + currentSaleLog.getTotalVAT().getAmount();
+        double totalPriceWithVat = currentSaleLog.getTotalPrice().getAmount() + currentSaleLog.getTotalVAT().getAmount()-currentSaleLog.getTotalDiscount().getAmount();
+
         double totalVat = currentSaleLog.getTotalVAT().getAmount();
         out.println("Applied discounts: " + currentSaleLog.getAppliedDiscounts());
-        out.println("Total with VAT: " + totalPriceWithVat);
+        out.println("Total Discount: "+ currentSaleLog.getTotalDiscount().getAmount());
         out.println("Total VAT: "+ totalVat);
+        out.println("Total with VAT and discount: " + totalPriceWithVat);
         out.println("Change: "+currentSaleLog.getChange().getAmount());
         out.println("\n"+currentSaleLog.getSaleDate().getYear()+"-"+currentSaleLog.getSaleDate().getMonthValue()+"-"+currentSaleLog.getSaleDate().getDayOfMonth());
         out.println(currentSaleLog.getSaleDate().getHour()+":"+currentSaleLog.getSaleDate().getMinute()+":"+currentSaleLog.getSaleDate().getSecond());
