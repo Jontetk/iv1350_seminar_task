@@ -8,6 +8,11 @@ public class TotalPriceDiscount implements Discounter {
 
     }
     
+    /***
+     * A fixed amount of discount is applied to log if the total price of the sale exceeds 
+     * a specifed amount in the parameterDTO. 
+     */
+    @Override
     public void discount(DiscountParameterDTO parameterDTO, SaleLog saleLog){
         if(saleLog.getTotalPrice().getAmount() >= parameterDTO.getMinNeededTotal())
             saleLog.addTotalDiscount(parameterDTO.getFixedDiscountAmount());

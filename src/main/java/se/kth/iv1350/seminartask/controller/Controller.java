@@ -42,6 +42,12 @@ public class Controller {
         }
     }
 
+    /**
+     * 
+     * Adds an observer to the list of observers. These observers
+     * are notified when <Code>notifyAllObservers</Code> is evoked
+     * @param obs an object that implements SaleObserver class
+     */
     public void addSaleObserver(SaleObserver obs) {
         saleObservers.add(obs);
         
@@ -181,7 +187,10 @@ public class Controller {
         return currentSaleLog; 
     }
 
-
+    /**
+     * Applies all eligible discount for this sale given an customerID
+     * @param customerID an integer representing the current customers id
+     */
     public void applyDiscount(int customerID){
         
         ArrayList<DiscountParameterDTO> discountList = discountRegistry.getEligibleDiscounts(customerID);
