@@ -6,9 +6,15 @@ import se.kth.iv1350.seminartask.integration.discounting.*;
 import se.kth.iv1350.seminartask.util.*;
 import se.kth.iv1350.seminartask.model.*;
 
+
+    /**
+     * A registry that stores that stores a hasmap mapping customer IDs to an 
+     * array of discounts that they eligible for
+     */
+
 public class DiscountRegistry {
-    // Here we are going to have an customer ID, 
-    // discountObject hasmap. 
+    
+    
     private HashMap<Integer,ArrayList<DiscountParameterDTO>> discounts = new HashMap<Integer,ArrayList<DiscountParameterDTO>>();
 
     public DiscountRegistry(){
@@ -24,6 +30,11 @@ public class DiscountRegistry {
         discounts.put(2,custom_discounts);
     }  
 
+    /**
+     * 
+     * @param customerID Id for the customer that the discounts are fetched 
+     * @return an array list of DiscountParameterDTOs that a customer is eligible for
+     */
     public ArrayList<DiscountParameterDTO> getEligibleDiscounts(int customerID) {
         return discounts.get(customerID);
     }
