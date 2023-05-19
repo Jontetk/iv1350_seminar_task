@@ -20,7 +20,7 @@ public class TotalRevenueFileOutput implements SaleObserver {
 
     }
     public void newSale(SaleLog saleLog) {
-        totalIncome += saleLog.getTotalPrice().getAmount()+saleLog.getTotalVAT().getAmount();
+        totalIncome += saleLog.getTotalPrice().getAmount()+saleLog.getTotalVAT().getAmount()-saleLog.getTotalDiscount().getAmount();
         
         revenueStream.println("Total after sale"+(++saleNum)+": "+totalIncome);
 

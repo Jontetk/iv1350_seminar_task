@@ -112,7 +112,9 @@ public class View {
                     scanning = false;
             }
         }
-        Cash totalPrice = controller.getTotal();
+        out.println("Enter customerID :");
+        int customerID = scanner.nextInt();
+        Cash totalPrice = controller.getTotal(customerID);
         out.println("\nTotal price to pay:"+totalPrice.getAmount() +totalPrice.getCurrency());
         out.print("Payment:");
         double payment = scanner.nextDouble();
@@ -139,6 +141,7 @@ public class View {
         }
         double totalPriceWithVat = currentSaleLog.getTotalPrice().getAmount() + currentSaleLog.getTotalVAT().getAmount();
         double totalVat = currentSaleLog.getTotalVAT().getAmount();
+        out.println("Applied discounts: " + currentSaleLog.getAppliedDiscounts());
         out.println("Total with VAT: " + totalPriceWithVat);
         out.println("Total VAT: "+ totalVat);
         out.println("Change: "+currentSaleLog.getChange().getAmount());

@@ -13,6 +13,7 @@ public class SaleLog {
     private LocalDateTime saleDate;
     private RegisteredItems registeredItems;
     private Cash change;
+    private StringBuilder appliedDiscounts;
 
     /**
      * Constructor method for an object representing the log for this entire sale.
@@ -37,7 +38,6 @@ public class SaleLog {
     public ArrayList<ScannedItem> getScannedItems() {
         return this.registeredItems.getItems();
     }
-    
 
     /**
      * @return a <code>Cash</code> instance representing 
@@ -50,6 +50,18 @@ public class SaleLog {
      * Gets the total discount
      * @return the total discount
      */
+    public void addAppliedDiscount(String discountName) {
+        appliedDiscounts.append(" ");
+        appliedDiscounts.append(discountName);
+        appliedDiscounts.append(" ,");
+    }
+    public String getAppliedDiscounts() {
+        int lastCommaIndex =  appliedDiscounts.lastIndexOf(",");
+        appliedDiscounts.deleteCharAt(lastCommaIndex);
+        return appliedDiscounts.toString();
+
+
+    }
     public Cash getTotalDiscount() {
         return this.registeredItems.getTotalDiscount();
     }
