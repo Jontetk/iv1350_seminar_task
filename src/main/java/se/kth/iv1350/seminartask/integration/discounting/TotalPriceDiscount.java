@@ -14,9 +14,10 @@ public class TotalPriceDiscount implements Discounter {
      */
     @Override
     public void discount(DiscountParameterDTO parameterDTO, SaleLog saleLog){
-        if(saleLog.getTotalPrice().getAmount() >= parameterDTO.getMinNeededTotal())
+        if(saleLog.getTotalPrice().getAmount() >= parameterDTO.getMinNeededTotal()){
             saleLog.addTotalDiscount(parameterDTO.getFixedDiscountAmount());
             saleLog.addAppliedDiscount(parameterDTO.getName());
+        }
 
     }
 }

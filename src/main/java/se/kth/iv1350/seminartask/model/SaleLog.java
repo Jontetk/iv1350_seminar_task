@@ -13,8 +13,8 @@ public class SaleLog {
     private LocalDateTime saleDate;
     private RegisteredItems registeredItems;
     private Cash change;
-    private StringBuilder appliedDiscounts ;
-
+    private StringBuilder appliedDiscounts;
+    private boolean discountApplied = false;
     /**
      * Constructor method for an object representing the log for this entire sale.
      */
@@ -51,13 +51,15 @@ public class SaleLog {
      * @return the total discount
      */
     public void addAppliedDiscount(String discountName) {
-        appliedDiscounts.append(" ");
         appliedDiscounts.append(discountName);
         appliedDiscounts.append(" ,");
+        discountApplied = true;
     }
     public String getAppliedDiscounts() {
         int lastCommaIndex =  appliedDiscounts.lastIndexOf(",");
-        appliedDiscounts.deleteCharAt(lastCommaIndex);
+        if (discountApplied);
+            appliedDiscounts.deleteCharAt(lastCommaIndex);
+
         return appliedDiscounts.toString();
 
 
