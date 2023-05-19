@@ -42,7 +42,7 @@ public final class DiscountParameterDTO {
         return minNeededTotal;
     }
 
-    public Cash getfixedDiscountAmount() {
+    public Cash getFixedDiscountAmount() {
         return fixedDiscountAmount;
     }
 
