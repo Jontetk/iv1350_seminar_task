@@ -7,7 +7,7 @@ import se.kth.iv1350.seminartask.util.*;
 
 
 public class ItemRegistryTest {
-    ItemRegistry itemReg = new ItemRegistry();
+    ItemRegistry itemReg = ItemRegistry.getItemRegistry();
 
     
     
