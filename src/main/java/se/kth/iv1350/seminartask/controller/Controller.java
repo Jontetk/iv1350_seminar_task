@@ -151,10 +151,11 @@ public class Controller {
     public Cash calculateChange(Cash paidAmount){
         double totalVatAmount = currentSaleLog.getTotalVAT().getAmount();
         double totalPriceAmount = currentSaleLog.getTotalPrice().getAmount();
+        double toalDiscountAmount = currentSaleLog.getTotalDiscount().getAmount();
         String currencyType = currentSaleLog.getTotalPrice().getCurrency();
-        Cash totalPriceWithVAT = new Cash(totalPriceAmount+totalVatAmount, currencyType);
+        Cash totalPriceWithVATandDiscount = new Cash(totalPriceAmount+totalVatAmount-toalDiscountAmount, currencyType);
 
-        Cash change = cashRegister.addPayment(paidAmount, totalPriceWithVAT);
+        Cash change = cashRegister.addPayment(paidAmount, totalPriceWithVATandDiscount);
         if (change != null )
             currentSaleLog.saveChange(change);
         return change; 
