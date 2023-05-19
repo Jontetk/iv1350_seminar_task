@@ -1,6 +1,12 @@
 package se.kth.iv1350.seminartask.integration;
 import se.kth.iv1350.seminartask.util.*;
 import se.kth.iv1350.seminartask.model.*;
+
+
+/**
+ * 
+ * Class for communication with an item registry
+ */
 public class ItemRegistry {
     
     // Local attributes to simulate an external database
@@ -15,15 +21,23 @@ public class ItemRegistry {
     
     private boolean dataBaseAvailable = true;
 
+    private static final ItemRegistry ITEM_REGISTRY = new ItemRegistry();
 
-
+    /**
+     * The item registry
+     * @return the only instance of this singleton.
+     */
+    public static ItemRegistry getItemRegistry() {
+        return ITEM_REGISTRY;
+    }
+    
     /**
      * Communicates with an external item database
      *
      * 
      */
 
-    ItemRegistry () {
+    private ItemRegistry () {
     
     }
     /**

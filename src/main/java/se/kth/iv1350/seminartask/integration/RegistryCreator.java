@@ -14,7 +14,7 @@ public class RegistryCreator {
     * All registry objects are initated under instatiation of the class
     */
     public RegistryCreator() {
-        this.itemRegistry = new ItemRegistry();
+        this.itemRegistry = ItemRegistry.getItemRegistry();
         this.accountingRegistry = AccountingRegistry.getAccountingRegistry();
         this.discountRegistry = DiscountRegistry.getDiscountRegistry();
     }
