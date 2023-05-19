@@ -16,7 +16,7 @@ public class ItemRegistryTest {
     void testSearchItemWithIdOfOne() {
         try {
             int expectedId = 1;
-            assertEquals(expectedId, itemReg.searchItem(1).getItemID());
+            assertEquals(expectedId, itemReg.searchItem(1).getItemID(),"The item was not fetched correctly");
         } catch (Exception e) {}
        
         
@@ -27,7 +27,7 @@ public class ItemRegistryTest {
     void testSearchItemWithIdofFive() {
         try {
         int expectedId =5;
-        assertEquals(expectedId, itemReg.searchItem(5).getItemID());  
+        assertEquals(expectedId, itemReg.searchItem(5).getItemID(),"The item was not fetched correctly");  
         } catch (Exception e) {}
         
     }
