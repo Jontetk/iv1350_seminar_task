@@ -67,7 +67,7 @@ public class ControllerTest {
             controller.selectItem(id, 4); 
         } catch (Exception e) {}
         
-        double priceWithVAT = controller.getTotal().getAmount();
+        double priceWithVAT = controller.getTotal(0).getAmount();
 
         double actualChangeAmount = controller.calculateChange(new Cash(paidAmount, "I$")).getAmount();
         double expectedChangeAmount = paidAmount-priceWithVAT;
