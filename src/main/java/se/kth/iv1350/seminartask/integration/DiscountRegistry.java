@@ -29,7 +29,7 @@ public class DiscountRegistry {
         
         // Local elements added to hashmap simulate an external database
         ArrayList<DiscountParameterDTO> custom_discounts = new ArrayList<DiscountParameterDTO>();
-        custom_discounts.add(new DiscountParameterDTO(new MultipleOfSameItemDiscount(), "50% off all milk", 0, new ScannedItem(new ItemDTO(7,"Milk",(new Cash(15,"I$")),0.3,100),1), new Cash(15/2,"I$")));
+        custom_discounts.add(new DiscountParameterDTO(new MultipleOfSameItemDiscount(), "50% off all milk", 0, new ScannedItem(new ItemDTO(7,"Milk",(new Cash(15,"I$")),0.3,100),1), new Cash(7.5,"I$")));
         custom_discounts.add(new DiscountParameterDTO(new MultipleOfSameItemDiscount(), "3 cookies for price of 1", 0, new ScannedItem(new ItemDTO(5,"Cookie",new Cash(25,"I$"),0.21,25),3), new Cash(50,"I$")));
         custom_discounts.add(new DiscountParameterDTO(new TotalPriceDiscount(), "300 I$ off if more or euqal to 15000 I$", 15000, null, new Cash(300,"I$")));
         this.discounts.put(1,custom_discounts);
