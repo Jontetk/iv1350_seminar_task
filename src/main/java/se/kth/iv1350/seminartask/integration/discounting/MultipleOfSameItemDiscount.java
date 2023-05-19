@@ -23,11 +23,13 @@ public class MultipleOfSameItemDiscount implements Discounter{
         ScannedItem saleItem = saleLog.getScannedItems().get(index);
         int discountApplicationCount = saleItem.getAmount()/ parameterDTO.getItemAndAmountNeeded().getAmount();
         
+        if(discountApplicationCount > 0){
         Double discountAmount = parameterDTO.getFixedDiscountAmount().getAmount() * discountApplicationCount;
         Cash discountInCash = new Cash(discountAmount, "I$");
         saleItem.setDiscount(discountInCash);
         saleLog.addTotalDiscount(discountInCash);
         saleLog.addAppliedDiscount(parameterDTO.getName());
+        }
 
         }
        
