@@ -35,6 +35,11 @@ public ItemRegistry getItemRegistry() {
 public AccountingRegistry getAccountingRegistry() {
     return accountingRegistry;
 }
+
+
+/**
+ * @return an {@link se.kth.iv1350.seminartask.integration.DiscountRegistry} object.  
+ */
 public DiscountRegistry getDiscountRegistry(){
     return discountRegistry;
 }
