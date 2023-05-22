@@ -23,7 +23,7 @@ public class TotalRevenueFileOutput implements SaleObserver {
     public TotalRevenueFileOutput() throws IOException{
         totalIncome = 0;
         revenueStream = new PrintWriter(
-                    new FileWriter("TotalRevenue"), true);
+                    new FileWriter("TotalRevenue.txt"), true);
 
     }
     /**
