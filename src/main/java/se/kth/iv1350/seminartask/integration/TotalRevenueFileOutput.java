@@ -29,8 +29,8 @@ public class TotalRevenueFileOutput implements SaleObserver {
     /**
      * method for the observer to print revenue to file since program was started
      */
-    public void newSale(SaleLog saleLog) {
-        totalIncome += saleLog.getTotalPrice().getAmount()+saleLog.getTotalVAT().getAmount()-saleLog.getTotalDiscount().getAmount();
+    public void newSale(SaleLog log) {
+        totalIncome += log.getTotalPrice().getAmount()+log.getTotalVAT().getAmount()-log.getTotalDiscount().getAmount();
         
         revenueStream.println("Total after sale"+(++saleNum)+": "+totalIncome);
 
