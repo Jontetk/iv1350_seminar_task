@@ -40,7 +40,7 @@ public class Printer {
             recieptPrintStream.println("Unit price: "+ item.getItem().getPrice().getAmount()+itemCurrency+" VAT Price: "+itemVat+itemCurrency);
             recieptPrintStream.println("");
         }
-        double totalPriceWithVat = currentSaleLog.getTotalPrice().getAmount()-currentSaleLog.getTotalDiscount().getAmount() + currentSaleLog.getTotalVAT().getAmount();
+        double totalPriceWithVat = currentSaleLog.getTotalWithAllApplied().getAmount();
         double totalVat = currentSaleLog.getTotalVAT().getAmount();
         recieptPrintStream.println("Applied discounts: " + currentSaleLog.getAppliedDiscounts());
         recieptPrintStream.println("Total Discount: "+ currentSaleLog.getTotalDiscount().getAmount());

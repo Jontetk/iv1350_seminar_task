@@ -141,7 +141,7 @@ public class View {
             out.println("Unit price: "+ item.getItem().getPrice().getAmount()+itemCurrency+" VAT Price: "+itemVat+itemCurrency);
             out.println("");
         }
-        double totalPriceWithVat = currentSaleLog.getTotalPrice().getAmount() + currentSaleLog.getTotalVAT().getAmount()-currentSaleLog.getTotalDiscount().getAmount();
+        double totalPriceWithVat = currentSaleLog.getTotalWithAllApplied().getAmount();
 
         double totalVat = currentSaleLog.getTotalVAT().getAmount();
         out.println("Applied discounts: " + currentSaleLog.getAppliedDiscounts());

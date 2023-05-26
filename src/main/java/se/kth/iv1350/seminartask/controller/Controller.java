@@ -167,11 +167,7 @@ public class Controller {
         currentSaleLog.addSaleObservers(saleObservers);
         currentSaleLog.saveRegistredItems(registeredItems);
         applyDiscount(customerID);
-        double totalPrice = registeredItems.getTotalPrice().getAmount();
-        double totalVat = registeredItems.getTotalVAT().getAmount();
-        double totalDiscount = registeredItems.getTotalDiscount().getAmount();
-        String currencyType = currentSaleLog.getTotalPrice().getCurrency();
-        Cash totalPriceWithVAT = new Cash(totalPrice-totalDiscount+totalVat, currencyType);
+        Cash totalPriceWithVAT = currentSaleLog.getTotalWithAllApplied();
         return totalPriceWithVAT;
     }
 
