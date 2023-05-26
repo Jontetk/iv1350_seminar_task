@@ -53,6 +53,16 @@ public class Controller {
         
     }
 
+    /**
+     * 
+     * Adds multiple observers to the list of observers. These observers
+     * are notified when <Code>notifyAllObservers</Code> is evoked
+     * @param obs an arraylist of objects that implements SaleObserver class
+     */
+    public void addSaleObservers(ArrayList<SaleObserver> obs) {
+        saleObservers.addAll(obs);
+        
+    }
     
 
     /**
