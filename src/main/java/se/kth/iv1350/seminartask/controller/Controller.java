@@ -163,6 +163,7 @@ public class Controller {
      */
     public Cash getTotal(int customerID){
         currentSaleLog = new SaleLog();
+        currentSaleLog.addSaleObservers(saleObservers);
         currentSaleLog.saveRegistredItems(registeredItems);
         applyDiscount(customerID);
         double totalPrice = registeredItems.getTotalPrice().getAmount();
