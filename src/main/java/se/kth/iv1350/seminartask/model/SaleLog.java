@@ -137,6 +137,11 @@ public class SaleLog {
         saleObservers.addAll(obs);
         
     }
+
+    /**
+     * Notifies all observers with the total
+     * 
+     */
     private void notifyAllObservers() {
         for (SaleObserver observer : saleObservers){
             observer.newSale(this.getTotalWithAllApplied());
