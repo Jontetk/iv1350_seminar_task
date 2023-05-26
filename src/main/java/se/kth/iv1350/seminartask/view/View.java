@@ -34,6 +34,8 @@ public class View {
      */
 
     public View(Controller controller,Scanner scanner) throws IOException{
+
+        controller.addSaleObserver(new TotalRevenueView());
         this.errorMsgHandler = new ErrorMessageHandler();
         this.controller = controller;
         this.scanner = scanner;
