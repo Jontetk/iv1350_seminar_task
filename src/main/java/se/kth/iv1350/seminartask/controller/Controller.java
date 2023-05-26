@@ -36,11 +36,7 @@ public class Controller {
     private ArrayList<SaleObserver> saleObservers = new ArrayList<SaleObserver>();
 
 
-    private void notifyAllObservers() {
-        for (SaleObserver observer : saleObservers){
-            observer.newSale(currentSaleLog);
-        }
-    }
+
 
     /**
      * 
@@ -50,17 +46,6 @@ public class Controller {
      */
     public void addSaleObserver(SaleObserver obs) {
         saleObservers.add(obs);
-        
-    }
-
-    /**
-     * 
-     * Adds multiple observers to the list of observers. These observers
-     * are notified when <Code>notifyAllObservers</Code> is evoked
-     * @param obs an arraylist of objects that implements SaleObserver class
-     */
-    public void addSaleObservers(ArrayList<SaleObserver> obs) {
-        saleObservers.addAll(obs);
         
     }
     

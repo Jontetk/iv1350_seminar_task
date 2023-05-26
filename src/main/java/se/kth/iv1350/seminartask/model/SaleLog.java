@@ -29,6 +29,17 @@ public class SaleLog {
     public LocalDateTime getSaleDate() {
         return this.saleDate;
     }
+    /**
+     * Gets the price with vat and dicounts applied
+     * @return
+     */
+    public Cash getTotalWithAllApplied() {
+        double totalPrice = this.registeredItems.getTotalPrice().getAmount();
+        double totalVAT = this.registeredItems.getTotalVAT().getAmount();
+        double totalDiscount = this.registeredItems.getTotalDiscount().getAmount();
+        Cash totalAll = new Cash(totalPrice+totalVAT-totalDiscount,this.registeredItems.getTotalPrice().getCurrency());
+        return totalAll;
+    }
 
     /**
      * Gets the items that were purchased under this sale and saved to log.
@@ -114,6 +125,21 @@ public class SaleLog {
      */
     public void saveChange(Cash change) {
         this.change = change;
+    }
+    /**
+     * 
+     * Adds multiple observers to the list of observers. These observers
+     * are notified when <Code>notifyAllObservers</Code> is evoked
+     * @param obs an arraylist of objects that implements SaleObserver class
+     */
+    public void addSaleObservers(ArrayList<SaleObserver> obs) {
+        saleObservers.addAll(obs);
+        
+    }
+    private void notifyAllObservers() {
+        for (SaleObserver observer : saleObservers){
+            observer.newSale(currentSaleLog);
+        }
     }
 
 }
