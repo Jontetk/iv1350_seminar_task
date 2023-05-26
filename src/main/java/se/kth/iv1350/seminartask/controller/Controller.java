@@ -208,8 +208,6 @@ public class Controller {
      * @throws OperationFailedException if unable to save to the database
      */
     public void endSale() throws OperationFailedException{
-        notifyAllObservers();
-
         try{
         accountingRegistry.saveSaleLog(currentSaleLog);
         } 
