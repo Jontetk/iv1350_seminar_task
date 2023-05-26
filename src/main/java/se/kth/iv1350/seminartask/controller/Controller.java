@@ -77,7 +77,7 @@ public class Controller {
             ioExc.printStackTrace();          
         }
 
-        this.addSaleObserver(new TotalRevenueView());
+        
         this.addSaleObserver(new TotalRevenueFileOutput());
        
     }
