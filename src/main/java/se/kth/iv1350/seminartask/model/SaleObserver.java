@@ -1,5 +1,7 @@
 package se.kth.iv1350.seminartask.model;
 
+import se.kth.iv1350.seminartask.util.Cash;
+
 /**
  * A listener interface for recieving notifications about 
  * processed sales. The classes that need such notifications 
@@ -15,5 +17,5 @@ public interface SaleObserver {
      * 
      * @param log The log for the sale that has been processed.
      */
-    void newSale(SaleLog log);
+    void newSale(Cash totalPriceWithVATandDiscount);
 }

@@ -1,6 +1,7 @@
 package se.kth.iv1350.seminartask.view;
 
 import se.kth.iv1350.seminartask.model.*;
+import se.kth.iv1350.seminartask.util.Cash;
 
      /**
      * An observer that writes the total income since the program start  to console 
@@ -14,8 +15,8 @@ public class TotalRevenueView implements SaleObserver{
     public TotalRevenueView(){
         totalIncome =0;
     }
-    public void newSale(SaleLog log){
-        totalIncome += log.getTotalPrice().getAmount() + log.getTotalVAT().getAmount()-log.getTotalDiscount().getAmount();
+    public void newSale(Cash totalPriceWithVATandDiscount){
+        totalIncome += totalPriceWithVATandDiscount.getAmount();
         System.out.format("TotalRevenue: %.3f \n" ,totalIncome);
     }
     

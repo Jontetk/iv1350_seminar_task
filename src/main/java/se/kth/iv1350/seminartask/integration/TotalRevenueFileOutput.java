@@ -1,6 +1,8 @@
 package se.kth.iv1350.seminartask.integration;
 
 import se.kth.iv1350.seminartask.model.*;
+import se.kth.iv1350.seminartask.util.Cash;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -29,8 +31,8 @@ public class TotalRevenueFileOutput implements SaleObserver {
     /**
      * method for the observer to print revenue to file since program was started
      */
-    public void newSale(SaleLog log) {
-        totalIncome += log.getTotalPrice().getAmount()+log.getTotalVAT().getAmount()-log.getTotalDiscount().getAmount();
+    public void newSale(Cash totalPriceWithVATandDiscount) {
+        totalIncome += totalPriceWithVATandDiscount.getAmount();
         
         revenueStream.println("Total after sale"+(++saleNum)+": "+totalIncome);
 

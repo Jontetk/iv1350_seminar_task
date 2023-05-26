@@ -15,6 +15,7 @@ public class SaleLog {
     private Cash change;
     private StringBuilder appliedDiscounts;
     private boolean discountApplied = false;
+    private ArrayList<SaleObserver> saleObservers = new ArrayList<SaleObserver>();
     /**
      * Constructor method for an object representing the log for this entire sale.
      */
@@ -138,7 +139,7 @@ public class SaleLog {
     }
     private void notifyAllObservers() {
         for (SaleObserver observer : saleObservers){
-            observer.newSale(currentSaleLog);
+            observer.newSale(this.getTotalWithAllApplied());
         }
     }
 
