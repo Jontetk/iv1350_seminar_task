@@ -121,11 +121,12 @@ public class SaleLog {
     }
 
     /**
-     * 
+     * Saves the change and notifies observers as the sale is complete when the change is saved
      * @param change the change to be saved to the log.
      */
     public void saveChange(Cash change) {
         this.change = change;
+        this.notifyAllObservers();
     }
     /**
      * 
