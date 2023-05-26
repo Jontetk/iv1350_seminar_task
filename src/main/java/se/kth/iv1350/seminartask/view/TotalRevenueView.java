@@ -17,7 +17,7 @@ public class TotalRevenueView implements SaleObserver{
     }
     public void newSale(Cash totalPriceWithVATandDiscount){
         totalIncome += totalPriceWithVATandDiscount.getAmount();
-        System.out.format("TotalRevenue: %.3f \n" ,totalIncome);
+        System.out.format("TotalRevenue: %.3f \n\n" ,totalIncome);
     }
     
 }

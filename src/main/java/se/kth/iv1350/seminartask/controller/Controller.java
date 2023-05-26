@@ -29,6 +29,7 @@ public class Controller {
     private CashRegister cashRegister;
     private SaleLog currentSaleLog;
     private DiscountRegistry discountRegistry;
+    private Cash change;
 
     private static Logger logger = Logger.getLogger(Controller.class.getName());
 
@@ -61,6 +62,7 @@ public class Controller {
         this.accountingRegistry = creator.getAccountingRegistry();
         this.discountRegistry = creator.getDiscountRegistry();
         this.cashRegister = new CashRegister(new Cash(10000,"I$"));
+
 
         try {
         FileHandler fileHandler = new FileHandler("controller.log");
@@ -150,9 +152,8 @@ public class Controller {
         String currencyType = currentSaleLog.getTotalPrice().getCurrency();
         Cash totalPriceWithVATandDiscount = new Cash(totalPriceAmount+totalVatAmount-toalDiscountAmount, currencyType);
 
-        Cash change = cashRegister.addPayment(paidAmount, totalPriceWithVATandDiscount);
-        if (change != null )
-            currentSaleLog.saveChange(change);
+        change = cashRegister.addPayment(paidAmount, totalPriceWithVATandDiscount);
+
         return change; 
     }
 
@@ -182,6 +183,7 @@ public class Controller {
      * @return the current {@link se.kth.iv1350.seminartask.model.SaleLog SaleLog} 
      */
     public SaleLog getReceipt()throws IOException {
+        currentSaleLog.saveChange(change);
         currentSaleLog.saveCurrentDate();
         printer.printReceipt(currentSaleLog);
         return currentSaleLog; 
