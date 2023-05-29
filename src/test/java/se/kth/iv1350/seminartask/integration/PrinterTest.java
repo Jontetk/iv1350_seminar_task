@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.time.LocalDate;
-
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 import org.junit.jupiter.api.AfterEach;
@@ -47,10 +47,12 @@ public class PrinterTest {
 
     @Test
     void testPrintReceipt() {
-        LocalDate currenTime = LocalDate.now();
-        // String formattedDateString = currenTime.format(DateTimeFormatter.ISO_DATE);
-        String formattedDateString =  currenTime.getYear() + "-" + currenTime.getMonthValue() +"-"+currenTime.getDayOfMonth();
+        LocalDate currenDate = LocalDate.now();
+        // String formattedDateString = currentTime.format(DateTimeFormatter.ISO_DATE);
+        String formattedDateString =  currenDate.getYear() + "-" + currenDate.getMonthValue() +"-"+currenDate.getDayOfMonth();
         
+        LocalTime currentTime = LocalTime.now();
+        String formattedTimeString = currentTime.format(DateTimeFormatter.ISO_TIME);
 
         ItemDTO testItem1 = new ItemDTO(15, "testItem", new Cash(14.15, "I$"), 0.1, 15);
         int testItem1amount = 4;
@@ -59,15 +61,16 @@ public class PrinterTest {
         RegisteredItems registeredItems = new RegisteredItems();
         registeredItems.addItem(testItem1, testItem1amount);
         registeredItems.addItem(testItem2, testItem2amount);
-        registeredItems.addTotalDiscount(new Cash(50.10, "I$"));
+        Cash discount = new Cash(50.10, "I$");
+        registeredItems.addTotalDiscount(discount);
         Cash change = new Cash(1000.10, "I$");
 
-        String discounts ="Discount1,";
+        String discountName ="Discount1,";
 
         SaleLog sale = new SaleLog();
         sale.saveRegistredItems(registeredItems);
         sale.saveChange(change);
-        sale.addAppliedDiscount(discounts);
+        sale.addAppliedDiscount(discountName);
         sale.saveCurrentDate();
         
         
@@ -85,15 +88,25 @@ public class PrinterTest {
         String expectedMessageForTestItem2 = testItem2.getDescription()+" x " + testItem2amount+" "+ testitem2price+"I$";
 
         assertTrue(result.contains(expectedMessageForTestItem1), "Message for the first item is invalid");
-        assertTrue(result.contains(expectedMessageForTestItem1), "Message for the second item is invalid");
+        assertTrue(result.contains(expectedMessageForTestItem2), "Message for the second item is invalid");
+        double VATitem1 = testitem1price*testItem1.getVatRate();
+        double VATitem2 = testitem2price*testItem2.getVatRate();
+        double TotalVAT = VATitem1 + VATitem2;
 
-        assertTrue(result.contains(discounts), "DiscountMessage");
+        assertTrue(result.contains(testItem1.getPrice().getAmount()+"I$"+" VAT Price: "+VATitem1), "Incorrect unit price or VAT rate for item1 ");
+        assertTrue(result.contains(testItem2.getPrice().getAmount()+"I$"+" VAT Price: "+VATitem2), "Incorrect unit price or VAT rate for item2");
+        
+        assertTrue(result.contains(discountName), "DiscountMessage");
+        assertTrue(result.contains(discount.getAmount()+""), "Wrong discount amount");
+        assertTrue(result.contains(TotalVAT+""), "Incorrect Total VAT");
+        assertTrue(result.contains((testitem1price+testitem2price+TotalVAT-discount.getAmount())+""), "Incorrect Total price");
 
         assertTrue(result.contains(formattedDateString), "Expected "+formattedDateString);
            
-        assertTrue(result.contains(change.getAmount()+""), "null");
+        // assertTrue(result.contains(formattedTimeString), "null");
+        assertTrue(result.contains(change.getAmount()+""), "Wrong change amount");
         
-        
+
         
     
 
