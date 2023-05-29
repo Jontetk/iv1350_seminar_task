@@ -13,12 +13,24 @@ import java.io.PrintStream;
  * 
  */
 public class Printer {
+    private File file;
+    private PrintStream recieptPrintStream;
     
     /**
      *  Creates an object that represents a printer
      */
-    public Printer(){
+    public Printer() throws IOException{
+        this.file = new File("reciept.txt");
+        this.file.createNewFile();
+        this.recieptPrintStream = new PrintStream(file);
+    }
 
+
+    public PrintStream getCurrentPrintStream() {
+        return recieptPrintStream;
+    }
+    public void setCurrentPrintStream(PrintStream newPrintStream) {
+        this.recieptPrintStream = newPrintStream;
     }
     
     /**
@@ -29,9 +41,7 @@ public class Printer {
      */
     public void printReceipt(SaleLog currentSaleLog) throws IOException
     {
-        File file = new File("reciept.txt");
-        file.createNewFile();
-        PrintStream recieptPrintStream = new PrintStream(file);
+
         for (ScannedItem item : currentSaleLog.getScannedItems()) {
             double itemPrice = item.getItem().getPrice().getAmount()*item.getAmount();
             double itemVat = item.getItem().getVatRate()*itemPrice; 
