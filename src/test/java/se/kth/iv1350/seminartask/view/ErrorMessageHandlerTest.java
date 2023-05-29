@@ -30,7 +30,7 @@ void CleanUpStreams() {
 }
 
 @Test
-void testTotalRevenueView(){
+void testErrorMesssageHandler(){
     
     try {
         throw new Exception("This is an exception message");
