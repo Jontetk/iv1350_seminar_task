@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.StringWriter;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,7 +18,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import se.kth.iv1350.seminartask.util.Cash;
 
 public class TotalRevenueFileOutputTest {
-    private ByteArrayOutputStream outContent;
+    private StringWriter outContent;
     private PrintWriter originalRevenueStream;
     private TotalRevenueFileOutput totalRevenueFileOutput = new TotalRevenueFileOutput();
     private double total = 0;
@@ -29,7 +30,7 @@ public class TotalRevenueFileOutputTest {
     public void setUpStreams() {
 
         originalRevenueStream = totalRevenueFileOutput.getRevenueStream();
-        outContent = new ByteArrayOutputStream();
+        outContent = new StringWriter();
         totalRevenueFileOutput.setRevenueStream(new PrintWriter(outContent));
     }
     @AfterEach
@@ -48,7 +49,7 @@ public class TotalRevenueFileOutputTest {
         totalRevenueFileOutput.newSale(paid);
         String result = outContent.toString();
         String expected = "Total after sale"+saleNum+": "+total;
-        assertTrue(expected.contains(result), "incorrect printout");
+        assertTrue(result.contains(expected), "Incorrect printout");
         }
     }
 
