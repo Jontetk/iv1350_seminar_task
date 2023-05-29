@@ -70,8 +70,8 @@ public class PrinterTest {
 
         SaleLog sale = new SaleLog();
         sale.saveRegistredItems(registeredItems);
-        sale.saveChange(change);
         sale.addAppliedDiscount(discountName);
+        sale.saveChange(change);
         sale.saveCurrentDate();
         
         
