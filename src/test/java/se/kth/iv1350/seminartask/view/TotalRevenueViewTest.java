@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -37,17 +38,19 @@ void CleanUpStreams() {
     
     @ParameterizedTest
     @ValueSource(doubles = {1, 100, java.lang.Math.PI,1.3333, 99.100001, Double.MAX_VALUE})
-    void testTotalRevenueView(){
+    void testTotalRevenueView(Double doubles){
         TotalRevenueView totalRevenueView = new TotalRevenueView();
-        double revenueAmount = 100.31;
+        double revenueAmount = doubles;
         Cash revenue = new Cash(revenueAmount, "I$"); 
         totalRevenueView.newSale(revenue);
 
         String result = outContent.toString();
         assertTrue(result.contains(String.format("%.3f", revenueAmount)), "Wrong revenue amount or format");
 
+       
 
 
+        
 
 
         
