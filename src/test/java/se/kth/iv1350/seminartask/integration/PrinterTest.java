@@ -9,6 +9,7 @@ import java.io.PrintStream;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -47,12 +48,12 @@ public class PrinterTest {
 
     @Test
     void testPrintReceipt() {
-        LocalDate currenDate = LocalDate.now();
-        // String formattedDateString = currentTime.format(DateTimeFormatter.ISO_DATE);
-        String formattedDateString =  currenDate.getYear() + "-" + currenDate.getMonthValue() +"-"+currenDate.getDayOfMonth();
+        LocalDate currentDate = LocalDate.now();
+        String formattedDateString = currentDate.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT));
+    
         
         LocalTime currentTime = LocalTime.now();
-        String formattedTimeString = currentTime.format(DateTimeFormatter.ISO_TIME);
+        String formattedTimeString = currentTime.format(DateTimeFormatter.ofLocalizedTime(FormatStyle.MEDIUM));
 
         ItemDTO testItem1 = new ItemDTO(15, "testItem", new Cash(14.15, "I$"), 0.1, 15);
         int testItem1amount = 4;
@@ -101,9 +102,8 @@ public class PrinterTest {
         assertTrue(result.contains(TotalVAT+""), "Incorrect Total VAT");
         assertTrue(result.contains((testitem1price+testitem2price+TotalVAT-discount.getAmount())+""), "Incorrect Total price");
 
-        assertTrue(result.contains(formattedDateString), "Expected "+formattedDateString);
-           
-        // assertTrue(result.contains(formattedTimeString), "null");
+        assertTrue(result.contains(formattedDateString), "Wrong date or formatting");   
+        assertTrue(result.contains(formattedTimeString), "Wrong time or format");
         assertTrue(result.contains(change.getAmount()+""), "Wrong change amount");
         
 
