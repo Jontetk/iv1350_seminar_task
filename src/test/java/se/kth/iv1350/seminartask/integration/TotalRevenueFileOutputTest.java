@@ -27,14 +27,14 @@ public class TotalRevenueFileOutputTest {
 
 
     @BeforeEach
-    public void setUpStreams() {
+    void setUpStreams() {
 
         originalRevenueStream = totalRevenueFileOutput.getRevenueStream();
         outContent = new StringWriter();
         totalRevenueFileOutput.setRevenueStream(new PrintWriter(outContent));
     }
     @AfterEach
-    public void cleanUpStrams() {
+    void cleanUpStrams() {
         outContent = null;
         totalRevenueFileOutput.setRevenueStream(originalRevenueStream);
     }

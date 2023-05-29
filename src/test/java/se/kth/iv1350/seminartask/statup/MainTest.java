@@ -17,13 +17,13 @@ public class MainTest {
 
 
     @BeforeEach 
-    public void setUpStreams() {
+    void setUpStreams() {
        originalSysOut = System.out;
        outContent = new ByteArrayOutputStream();
        System.setOut(new PrintStream(outContent));
     }
     @AfterEach
-    public void cleanUpStreams() {
+    void cleanUpStreams() {
         outContent = null;
         System.setOut(originalSysOut);
     }
