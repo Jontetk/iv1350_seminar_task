@@ -89,9 +89,9 @@ public class PrinterTest {
 
         assertTrue(result.contains(discounts), "DiscountMessage");
 
-        // assertTrue(result.contains(formattedDateString+"  "), "Expected "+formattedDateString);
+        assertTrue(result.contains(formattedDateString), "Expected "+formattedDateString);
            
-
+        assertTrue(result.contains(change.getAmount()+""), "null");
         
         
         
