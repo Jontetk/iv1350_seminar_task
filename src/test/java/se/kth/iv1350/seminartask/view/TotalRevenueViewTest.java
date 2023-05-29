@@ -22,13 +22,13 @@ public class TotalRevenueViewTest {
     private PrintStream originalSysOut;
 
 @BeforeEach
-public void setUpStreams() {
+void setUpStreams() {
     originalSysOut = System.out;
     outContent = new ByteArrayOutputStream();
     System.setOut(new PrintStream(outContent));
 }
 @AfterEach
-public void CleanUpStreams() {
+void CleanUpStreams() {
     outContent = null;
     System.setOut(originalSysOut);
 }
@@ -37,7 +37,7 @@ public void CleanUpStreams() {
     
     @ParameterizedTest
     @ValueSource(doubles = {1, 100, java.lang.Math.PI,1.3333, 99.100001, Double.MAX_VALUE})
-    public void testTotalRevenueView(){
+    void testTotalRevenueView(){
         TotalRevenueView totalRevenueView = new TotalRevenueView();
         double revenueAmount = 100.31;
         Cash revenue = new Cash(revenueAmount, "I$"); 
