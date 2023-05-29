@@ -5,6 +5,8 @@ import static java.lang.System.out;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 
 /**
@@ -57,8 +59,8 @@ public class Printer {
         recieptPrintStream.println("Total with VAT: " + totalPriceWithVat);
         recieptPrintStream.println("Total VAT: "+ totalVat);
         recieptPrintStream.println("Change: "+currentSaleLog.getChange().getAmount());
-        recieptPrintStream.println("\n"+currentSaleLog.getSaleDate().getYear()+"-"+currentSaleLog.getSaleDate().getMonthValue()+"-"+currentSaleLog.getSaleDate().getDayOfMonth());
-        recieptPrintStream.print(currentSaleLog.getSaleDate().getHour()+":"+currentSaleLog.getSaleDate().getMinute()+":"+currentSaleLog.getSaleDate().getSecond());
+        recieptPrintStream.println("\n"+currentSaleLog.getSaleDate().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)));
+        recieptPrintStream.print(currentSaleLog.getSaleDate().format(DateTimeFormatter.ofLocalizedTime(FormatStyle.MEDIUM)));
         recieptPrintStream.close();
     }
 }

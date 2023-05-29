@@ -13,6 +13,8 @@ import java.util.logging.SimpleFormatter;
 import java.util.logging.Logger.*;
 
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 import static java.lang.System.in;
 
@@ -149,8 +151,8 @@ public class View {
         out.println("Total VAT: "+ totalVat);
         out.println("Total with VAT and discount: " + totalPriceWithVat);
         out.println("Change: "+currentSaleLog.getChange().getAmount());
-        out.println("\n"+currentSaleLog.getSaleDate().getYear()+"-"+currentSaleLog.getSaleDate().getMonthValue()+"-"+currentSaleLog.getSaleDate().getDayOfMonth());
-        out.println(currentSaleLog.getSaleDate().getHour()+":"+currentSaleLog.getSaleDate().getMinute()+":"+currentSaleLog.getSaleDate().getSecond());
+        out.println("\n"+currentSaleLog.getSaleDate().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)));
+        out.println(currentSaleLog.getSaleDate().format(DateTimeFormatter.ofLocalizedTime(FormatStyle.MEDIUM)));
 
         try {
         controller.endSale();
