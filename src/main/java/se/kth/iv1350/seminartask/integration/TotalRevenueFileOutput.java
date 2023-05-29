@@ -20,13 +20,26 @@ public class TotalRevenueFileOutput implements SaleObserver {
     private int saleNum = 0;
     /**
      * Creator for the totalrevenuefileout
-     * @throws IOException 
+     * 
      */
-    public TotalRevenueFileOutput() throws IOException{
-        totalIncome = 0;
-        revenueStream = new PrintWriter(
+    public TotalRevenueFileOutput() {
+        this.totalIncome = 0;
+        try{
+        this.revenueStream = new PrintWriter(
                     new FileWriter("TotalRevenue.txt"), true);
+        } catch(IOException e){}
 
+    }
+    /**
+     * Returns the revenueStream
+     * @return The revenueStream
+     */
+    public PrintWriter getRevenueStream() {
+        return revenueStream;
+    }
+    
+    public void setRevenueStream(PrintWriter newRevenueStream) {
+        this.revenueStream = newRevenueStream;
     }
     /**
      * method for the observer to print revenue to file since program was started
