@@ -17,12 +17,7 @@ public class TotalRevenueView extends TotalRevenuePrint{
         super();
     }
 
-    /*
-    public void newSale(Cash totalPriceWithVATandDiscount){
-        totalIncome += totalPriceWithVATandDiscount.getAmount();
-        System.out.format("TotalRevenue: %.3f \n\n" ,totalIncome);
-    }
-   */
+  
 
     @Override
     protected void doShowTotalIncome() throws Exception{
@@ -32,6 +27,6 @@ public class TotalRevenueView extends TotalRevenuePrint{
     
     @Override
     protected void handleErrors(Exception e){
-        
+
     }
 
