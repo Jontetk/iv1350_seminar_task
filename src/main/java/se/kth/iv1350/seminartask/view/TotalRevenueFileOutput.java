@@ -50,7 +50,7 @@ public class TotalRevenueFileOutput extends TotalRevenuePrint {
 
     }
     public void handleErrors(Exception e) {
-        ErrorMessageHandler errorMsgHandler = new ErrorMessageHandler()
+        ErrorMessageHandler errorMsgHandler = new ErrorMessageHandler();
         errorMsgHandler.showErrorMessage(e.toString());
     }
     
