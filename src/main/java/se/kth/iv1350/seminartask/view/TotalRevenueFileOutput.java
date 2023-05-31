@@ -22,7 +22,7 @@ public class TotalRevenueFileOutput extends TotalRevenuePrint {
      * 
      */
     public TotalRevenueFileOutput() {
-        this.totalIncome = 0;
+        super();
         try{
         this.revenueStream = new PrintWriter(
                     new FileWriter("TotalRevenue.txt"), true);
@@ -36,19 +36,22 @@ public class TotalRevenueFileOutput extends TotalRevenuePrint {
     public PrintWriter getRevenueStream() {
         return revenueStream;
     }
-    
+    /**
+     * Sets the revenueStream
+     * @param newRevenueStream the revenueStream
+     */
     public void setRevenueStream(PrintWriter newRevenueStream) {
         this.revenueStream = newRevenueStream;
     }
-    /**
-     * method for the observer to print revenue to file since program was started
-     */
+
+    @Override
     public void doShowTotalIncome() {
 
-        
         revenueStream.println("Total after sale"+(saleNum)+": "+totalIncome);
 
     }
+
+    @Override
     public void handleErrors(Exception e) {
         ErrorMessageHandler errorMsgHandler = new ErrorMessageHandler();
         errorMsgHandler.showErrorMessage(e.toString());
