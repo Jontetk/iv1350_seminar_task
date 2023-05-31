@@ -1,4 +1,4 @@
-package se.kth.iv1350.seminartask.integration;
+package se.kth.iv1350.seminartask.view;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -16,6 +16,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 
 import se.kth.iv1350.seminartask.util.Cash;
+import se.kth.iv1350.seminartask.view.TotalRevenueFileOutput;
 
 public class TotalRevenueFileOutputTest {
     private StringWriter outContent;

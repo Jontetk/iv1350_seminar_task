@@ -1,4 +1,4 @@
-package se.kth.iv1350.seminartask.integration;
+package se.kth.iv1350.seminartask.view;
 
 import se.kth.iv1350.seminartask.model.*;
 import se.kth.iv1350.seminartask.util.Cash;
@@ -14,10 +14,9 @@ import java.io.FileWriter;
  * 
  * Observer that prints to file
  */
-public class TotalRevenueFileOutput implements SaleObserver {
+public class TotalRevenueFileOutput extends TotalRevenuePrint {
     PrintWriter revenueStream = null;
-    private double totalIncome;
-    private int saleNum = 0;
+
     /**
      * Creator for the totalrevenuefileout
      * 
@@ -44,11 +43,15 @@ public class TotalRevenueFileOutput implements SaleObserver {
     /**
      * method for the observer to print revenue to file since program was started
      */
-    public void newSale(Cash totalPriceWithVATandDiscount) {
-        totalIncome += totalPriceWithVATandDiscount.getAmount();
-        
-        revenueStream.println("Total after sale"+(++saleNum)+": "+totalIncome);
+    public void doShowTotalIncome() {
 
+        
+        revenueStream.println("Total after sale"+(saleNum)+": "+totalIncome);
+
+    }
+    public void handleErrors(Exception e) {
+        ErrorMessageHandler errorMsgHandler = new ErrorMessageHandler()
+        errorMsgHandler.showErrorMessage(e.toString());
     }
     
 }

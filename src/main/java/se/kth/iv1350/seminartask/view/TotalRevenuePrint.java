@@ -1,5 +1,6 @@
-package se.kth.iv1350.seminartask.model;
+package se.kth.iv1350.seminartask.view;
 
+import se.kth.iv1350.seminartask.model.SaleObserver;
 import se.kth.iv1350.seminartask.util.Cash;
 
 public abstract class TotalRevenuePrint implements SaleObserver {

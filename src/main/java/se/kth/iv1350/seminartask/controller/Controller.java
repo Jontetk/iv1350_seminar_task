@@ -14,6 +14,7 @@ import se.kth.iv1350.seminartask.integration.*;
 import se.kth.iv1350.seminartask.model.*;
 
 import se.kth.iv1350.seminartask.util.*;
+import se.kth.iv1350.seminartask.view.TotalRevenueFileOutput;
 import se.kth.iv1350.seminartask.view.TotalRevenueView;
 
 
@@ -75,7 +76,7 @@ public class Controller {
         }
 
         
-        this.addSaleObserver(new TotalRevenueFileOutput());
+        
        
     }
 
