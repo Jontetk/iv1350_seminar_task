@@ -29,4 +29,5 @@ public class TotalRevenueView extends TotalRevenuePrint{
     protected void handleErrors(Exception e){
 
     }
+}
 
