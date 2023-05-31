@@ -27,6 +27,7 @@ public class TotalRevenueView extends TotalRevenuePrint{
     @Override
     protected void handleErrors(Exception e){
         new ErrorMessageHandler().showErrorMessage("An error occured during console printout");
+        
     }
 }
 
