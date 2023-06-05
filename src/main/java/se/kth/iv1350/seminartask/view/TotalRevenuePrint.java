@@ -7,6 +7,11 @@ public abstract class TotalRevenuePrint implements SaleObserver {
     protected double totalIncome = 0;
     protected int saleNum = 0;
 
+    /**
+     * abstract class for printing totalrevenue
+     */
+    public TotalRevenuePrint() {
+    }
 
     /**
      * Calculates the total income and adds one to the saleNum
