@@ -25,6 +25,7 @@ public class PrinterTest {
     
     private ByteArrayOutputStream outContent;
     private Printer printer;
+    private PrintStream originalPrintStream;
 
     @BeforeEach
     void setUpStreams() {
@@ -32,6 +33,7 @@ public class PrinterTest {
             printer = new Printer();
             
             outContent = new ByteArrayOutputStream();
+            originalPrintStream = printer.getCurrentPrintStream();
             printer.setCurrentPrintStream(new PrintStream(outContent));
         
         } catch (Exception e) {
@@ -43,7 +45,7 @@ public class PrinterTest {
     @AfterEach
     void CleanUpStreams() {
         outContent = null;
-        printer.setCurrentPrintStream(System.out);
+        printer.setCurrentPrintStream(originalPrintStream);
     }
 
     @Test
