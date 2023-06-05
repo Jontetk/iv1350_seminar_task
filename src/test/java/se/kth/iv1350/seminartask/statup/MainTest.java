@@ -34,6 +34,7 @@ public class MainTest {
     void cleanUpStreams() {
         outContent = null;
         System.setOut(originalSysOut);
+        System.setIn(originalSysIn);
     }
 
     
