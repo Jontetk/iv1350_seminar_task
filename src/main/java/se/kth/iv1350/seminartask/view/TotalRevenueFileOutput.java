@@ -45,14 +45,14 @@ public class TotalRevenueFileOutput extends TotalRevenuePrint {
     }
 
     @Override
-    public void doShowTotalIncome() {
+    protected void doShowTotalIncome() {
 
         revenueStream.println("Total after sale"+(saleNum)+": "+totalIncome);
 
     }
 
     @Override
-    public void handleErrors(Exception e) {
+    protected void handleErrors(Exception e) {
         ErrorMessageHandler errorMsgHandler = new ErrorMessageHandler();
         errorMsgHandler.showErrorMessage(e.toString());
     }
